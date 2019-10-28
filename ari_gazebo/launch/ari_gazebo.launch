@@ -43,11 +43,15 @@
   </include>
 
   <!-- point cloud throttle and filter -->
-  <!--group unless="$(arg public_sim)">
+  <group unless="$(arg public_sim)">
     <include file="$(find pal_pcl_points_throttle_and_filter)/launch/throttle_filtering_points.launch">
-      <arg name="cloud"  value="/xtion/depth_registered/points"/>
+      <arg name="cloud"  value="/torso_front_camera/depth_registered/points"/>
     </include>
-  </group-->
+    <!--include file="$(find pal_pcl_points_throttle_and_filter)/launch/throttle_filtering_points.launch">
+      <arg name="cloud"  value="/torso_back_camera/depth_registered/points"/>
+    </include-->
+  </group>
 
-  <!--node name="image_proc" pkg="image_proc" type="image_proc" ns="xtion/rgb"/-->
+  <node name="image_proc" pkg="image_proc" type="image_proc" ns="torso_front_camera/rgb"/>
+  <!--node name="image_proc_back" pkg="image_proc" type="image_proc" ns="torso_back_camera/rgb"/-->
 </launch>

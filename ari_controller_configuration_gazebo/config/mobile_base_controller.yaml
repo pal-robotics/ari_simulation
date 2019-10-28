@@ -15,7 +15,7 @@ mobile_base_controller:
   # Preserve turning radius when limiting speed/acceleration/jerk
   preserve_turning_radius: true
 
-  # Publish limited velocity
+  # Publish actual velocity cmd
   publish_cmd: false
 
   # Publish wheel data
