@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-  <!--arg name="camera_model"/-->
   <arg name="gzpose" default="-x 0 -y 0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
   <arg name="multi" default=""/>
   <arg name="model_name" default="ari"/>
@@ -10,7 +9,7 @@
   <!-- PID gains -->
   <rosparam command="load" file="$(find ari_controller_configuration_gazebo)/config/pids.yaml"/>
 
-  <rosparam command="load" file="$(find ari_controller_configuration_gazebo)/config/hardware_gazebo/ari_pal_hardware_gazebo_no-arm.yaml"/>
+  <rosparam command="load" file="$(find ari_controller_configuration_gazebo)/config/hardware_gazebo/ari_pal_hardware_gazebo_arm.yaml"/>
 
   <!-- Joystick controller parameters -->
   <!--
@@ -19,7 +18,6 @@
 
   <!-- Robot model -->
   <include file="$(find ari_description)/robots/upload.launch">
-    <!--arg name="camera_model" value="$(arg camera_model)"/-->
     <arg name="multi"  value="$(arg multi)"/>
   </include>
 
