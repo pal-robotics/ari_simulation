@@ -17,5 +17,6 @@
   <exec_depend>play_motion</exec_depend-->
   <!--exec_depend>ari_moveit_config</exec_depend-->
   <exec_depend>ari_controller_configuration</exec_depend>
+  <exec_depend>ari_moveit_config</exec_depend>
 
 </package>
