@@ -16,7 +16,9 @@
               head_controller
               arm_left_controller
               arm_right_controller
-              mobile_base_controller"/>
+              mobile_base_controller
+              hand_left_controller
+              hand_right_controller"/>
 
   <!-- Controllers that come up started -->
   <node name="default_controllers_spawner"
