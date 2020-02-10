@@ -2,8 +2,8 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2020-02-10)
+------------------
 * Merge branch 'actuated_forearm_sim' into 'master'
   Actuated forearm sim
   See merge request robots/ari_simulation!3

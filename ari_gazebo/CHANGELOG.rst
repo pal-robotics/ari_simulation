@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2020-02-10)
+------------------
 * Merge branch 'remove-pal-throttle' into 'master'
   Remove pal throttle and models/worlds folders
   See merge request robots/ari_simulation!5
