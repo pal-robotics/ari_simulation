@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <launch>
-  <arg name="world"  default="empty"/>  <!-- empty, ... (see ../worlds) -->
+  <arg name="world"  default="empty"/> 
   <arg name="multi" default=""/>
   <arg name="gzpose" default="-x 0.0 -y 0.0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
   <arg name="gui" default="true"/>
@@ -9,7 +9,6 @@
   <arg name="public_sim" default="false"/>
   <arg name="recording" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
-  <!--arg name="use_moveit_camera" default="false"/-->
 
   <env name="LC_NUMERIC" value="C" />
 
@@ -33,7 +32,6 @@
   <!-- bring up robot -->
   <include file="$(find ari_gazebo)/launch/simulation_ari_bringup.launch">
     <arg name="public_sim"  value="$(arg public_sim)"/>
-    <!--arg name="use_moveit_camera" value="$(arg use_moveit_camera)"/-->
   </include>
 
   <!-- point cloud throttle and filter -->
@@ -43,6 +41,6 @@
     </include>
   </group>
 
+
   <node name="image_proc" pkg="image_proc" type="image_proc" ns="torso_front_camera/rgb"/>
-  <!--node name="image_proc_back" pkg="image_proc" type="image_proc" ns="torso_back_camera/rgb"/-->
 </launch>
