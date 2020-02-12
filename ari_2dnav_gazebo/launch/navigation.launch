@@ -5,7 +5,7 @@
 
   <arg name="planner"        default="base"/>
   <arg name="global_planner" default="global_planner"/>
-  <arg name="local_planner"  default="pal"/>
+  <arg name="local_planner"  default="teb"/>
   <arg name="localization"   default="amcl"/>
   <arg name="mapping"        default="karto"/>
   <arg name="octomap"        default="false"/>
@@ -19,8 +19,6 @@
   <arg name="sim_suffix" default=""/>
 
   <arg name="map" default="$(env HOME)/.pal/ari_maps/config"/>
-
-
 
   <!-- Localization or Mapping state -->
   <node pkg="pal_navigation_sm" type="navigation.sh" name="navigation"
@@ -41,7 +39,7 @@
   <!-- VO map server -->
   <group unless="$(arg public_sim)">
     <include file="$(find pal_vo_server)/launch/vo_server.launch">
-      <arg name="fill_with_unknown" value="true"/>
+      <!--arg name="fill_with_unknown" value="true"/-->
       <arg name="vo_resolution" value="0.3"/>
     </include>
   </group>

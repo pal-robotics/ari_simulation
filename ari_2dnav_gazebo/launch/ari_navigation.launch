@@ -10,7 +10,7 @@
   <arg name="rgbd_sensors"   default="_rgbd"/>
   <arg name="planner"        default="base"/>
   <arg name="global_planner" default="global_planner"/>
-  <arg name="local_planner"  default="$(eval 'teb' if arg('public_sim') else 'pal')"/>
+  <arg name="local_planner"  default="teb"/>
   <arg name="localization"   default="amcl"/>
   <arg name="map"            default="$(env HOME)/.pal/ari_maps/configurations/$(arg world)"/>
   <arg name="rviz"     default="true"/>
@@ -34,8 +34,8 @@
       <arg name="recording"  value="$(arg recording)"/>
       <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
 
-  <!-- Set dynamic_footprint to true when local planner is teb, uncomment once dynamic_footprint for ARI has been added  -->
-  <!--    <arg if="$(eval local_planner == 'teb')" name="use_dynamic_footprint" value="true"/>-->
+      <!-- Set dynamic_footprint to true when local planner is teb, uncomment once dynamic_footprint for ARI has been added  -->
+      <!-- <arg if="$(eval local_planner == 'teb')" name="use_dynamic_footprint" value="true"/>-->
     </include>
 
     <include file="$(find ari_2dnav_gazebo)/launch/navigation.launch">
