@@ -11,22 +11,19 @@
   <arg name="octomap"        default="false"/>
   <arg name="public_sim"     default="false"/>
   <arg name="disable_vo"     default="false"/>
-  <arg name="rgbd_sensors"   default="_rgbd"/>
-  <arg name="tf_prefix"      default=""/>
-  <arg name="multiple"       default="false"/>
   <arg name="config_base_path" default="$(find pal_navigation_cfg_ari)"/>
   <arg name="laser_model"    default="rgbd_scan"/>
-  <arg name="sim_suffix" default=""/>
 
   <arg name="map" default="$(env HOME)/.pal/ari_maps/config"/>
 
   <!-- Localization or Mapping state -->
   <node pkg="pal_navigation_sm" type="navigation.sh" name="navigation"
-        args="ari $(arg state) $(arg localization) $(arg mapping) $(arg map) $(arg octomap) $(arg multiple) $(arg tf_prefix)" output="screen"/>
+        args="ari $(arg state) $(arg localization) $(arg mapping) $(arg map) $(arg octomap)" output="screen"/>
 
   <!-- Navigation State Machine -->
   <include file="$(find ari_2dnav)/launch/state_machine.launch">
     <arg name="state" value="$(arg state)"/>
+    <arg name="public_sim" value="$(arg public_sim)"/>
   </include>
 
   <!-- Planning -->
@@ -34,6 +31,7 @@
     <arg name="config_base_path" value="$(arg config_base_path)"/>
     <arg name="global_planner" value="$(arg global_planner)"/>
     <arg name="local_planner"  value="$(arg local_planner)"/>
+    <arg name="public_sim" value="$(arg public_sim)"/>
   </include>
 
   <!-- VO map server -->

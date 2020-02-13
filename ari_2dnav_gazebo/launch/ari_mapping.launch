@@ -16,8 +16,6 @@
   <arg name="recording" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
 
-  <arg name="rgbd_sensors"   default="_rgbd"/>
-
   <arg name="sim_suffix" value="_public_sim"     if="$(arg public_sim)"/>
   <arg name="sim_suffix" value=""                unless="$(arg public_sim)"/>
 
@@ -41,9 +39,7 @@
       <arg name="global_planner" value="$(arg global_planner)"/>
       <arg name="local_planner"  value="$(arg local_planner)"/>
       <arg name="public_sim"     value="$(arg public_sim)"/>
-      <arg name="rgbd_sensors"   value="$(arg rgbd_sensors)"/>
       <arg name="laser_model"    value="$(arg laser_model)"/>
-      <arg name="sim_suffix" value="$(arg sim_suffix)"/>
     </include>
 
     <node name="rviz" pkg="rviz" type="rviz" if="$(arg rviz)"
