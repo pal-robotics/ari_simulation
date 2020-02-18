@@ -22,6 +22,6 @@
     <arg name="map_topic" value="$(arg map_topic)"/>
   </include>
 
-  <param name="transform_tolerance"  value="0.5"/>
+  <param name="transform_tolerance"  value="0.4"/>
 
 </launch>

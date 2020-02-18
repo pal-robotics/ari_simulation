@@ -23,10 +23,10 @@
 
   <!-- pointcloud to laserscan-->
   <include file="$(find ari_rgbd_sensors)/launch/rgbd_cloud_laser.launch">
-      <arg name="cloud" value="/torso_front_camera/depth/points"/>
+         <arg name="cloud" value="/torso_front_camera/depth/color/points"/>
   </include>
 
   <!-- Republish image_raw to image_rect_color to have the same available topic -->
-  <node name="image_raw_to_rect_color_relay" pkg="topic_tools" type="relay" args="torso_front_camera/rgb/image_raw torso_front_camera/rgb/image_rect_color" />
+  <node name="image_raw_to_rect_color_relay" pkg="topic_tools" type="relay" args="torso_front_camera/depth/color/image_raw torso_front_camera/depth/color/image_rect_color" />
 
 </launch>
