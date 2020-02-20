@@ -2,11 +2,13 @@
 <launch>
   <arg name="public_sim"     default="false"/>
   <arg name="tf_prefix" default=""/>
+  <arg name="ari_end_effector" default="ari_hand"/>
 
   <!-- Joint trajectory and diff drive controllers -->
   <rosparam command="load" file="$(find ari_controller_configuration_gazebo)/config/mobile_base_controller.yaml"/>
   <include file="$(find ari_controller_configuration_gazebo)/launch/ari_controllers.launch">
     <arg name="tf_prefix" value="$(arg tf_prefix)"/>
+    <arg name="ari_end_effector" value="$(arg ari_end_effector)"/>
   </include>
 
   <!-- Robot state publisher -->
