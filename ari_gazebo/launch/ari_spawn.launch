@@ -3,7 +3,8 @@
   <arg name="gzpose" default="-x 0 -y 0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
   <arg name="multi" default=""/>
   <arg name="model_name" default="ari"/>
-  <arg name="ari_end_effector" default="ari_hand"/>
+  <arg name="end_effector_right" default="ari-hand"/>
+  <arg name="end_effector_left" default="ari-hand"/>
 
   <rosparam ns="pal_robot_info" param="type">"ari"</rosparam>
 
@@ -15,7 +16,8 @@
   <!-- Robot model -->
   <include file="$(find ari_description)/robots/upload.launch">
     <arg name="multi"  value="$(arg multi)"/>
-    <arg name="ari_end_effector" value="$(arg ari_end_effector)"/>
+    <arg name="end_effector_right" value="$(arg end_effector_right)"/>
+    <arg name="end_effector_left" value="$(arg end_effector_left)"/>
   </include>
 
   <!-- Spawn robot in Gazebo -->

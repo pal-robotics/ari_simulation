@@ -2,11 +2,13 @@
 <launch>
     <arg name="public_sim"	default="false"/>
     <arg name="tf_prefix"         default=""/>
-    <arg name="ari_end_effector" default="ari_hand"/>
+  <arg name="end_effector_right" default="ari-hand"/>
+  <arg name="end_effector_left" default="ari-hand"/>
 
     <include file="$(find ari_controller_configuration_gazebo)/launch/default_controllers.launch">
         <arg name="tf_prefix" value="$(arg tf_prefix)"/>
-        <arg name="ari_end_effector" value="$(arg ari_end_effector)"/>
+    <arg name="end_effector_right" value="$(arg end_effector_right)"/>
+    <arg name="end_effector_left" value="$(arg end_effector_left)"/>
     </include>
 
     <!-- Motion planning -->

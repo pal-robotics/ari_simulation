@@ -9,7 +9,8 @@
   <arg name="public_sim" default="false"/>
   <arg name="recording" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
-  <arg name="ari_end_effector" default="ari_hand"/>
+  <arg name="end_effector_right" default="ari-hand"/>
+  <arg name="end_effector_left" default="ari-hand"/>
 
   <env name="LC_NUMERIC" value="C" />
 
@@ -28,13 +29,15 @@
   <include file="$(find ari_gazebo)/launch/ari_spawn.launch">
     <arg name="multi" value="$(arg multi)"/>
     <arg name="gzpose" value="$(arg gzpose)"/>
-    <arg name="ari_end_effector" value="$(arg ari_end_effector)"/>
+    <arg name="end_effector_right" value="$(arg end_effector_right)"/>
+    <arg name="end_effector_left" value="$(arg end_effector_left)"/>
   </include>
 
   <!-- bring up robot -->
   <include file="$(find ari_gazebo)/launch/simulation_ari_bringup.launch">
     <arg name="public_sim"  value="$(arg public_sim)"/>
-    <arg name="ari_end_effector" value="$(arg ari_end_effector)"/>
+    <arg name="end_effector_right" value="$(arg end_effector_right)"/>
+    <arg name="end_effector_left" value="$(arg end_effector_left)"/>
   </include>
 
 </launch>
