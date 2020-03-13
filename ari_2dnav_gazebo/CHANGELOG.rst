@@ -2,8 +2,8 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2020-03-13)
+------------------
 * changelog
 * Merge branch 'cleaned-up-ari-simulation' into 'master'
   Cleaned up ari simulation
