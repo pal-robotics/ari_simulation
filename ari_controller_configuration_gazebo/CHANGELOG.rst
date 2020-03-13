@@ -2,6 +2,15 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'cleaned-up-ari-simulation' into 'master'
+  Cleaned up ari simulation
+  See merge request robots/ari_simulation!6
+* cleanup
+* Clean up by removing unecessary parts
+* Contributors: Procópio Stein, procopiostein, saracooper
+
 0.0.1 (2020-02-10)
 ------------------
 * Merge branch 'actuated_forearm_sim' into 'master'

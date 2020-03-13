@@ -2,6 +2,17 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'cleaned-up-ari-simulation' into 'master'
+  Cleaned up ari simulation
+  See merge request robots/ari_simulation!6
+* cleanup
+* Fix topics and localization transform frame values
+* Launch rgbd_cloud_laser to enable mapping
+* Clean up by removing unecessary parts
+* Contributors: Procópio Stein, Sara Cooper, procopiostein, saracooper
+
 0.0.1 (2020-02-10)
 ------------------
 * Merge branch 'remove-pal-throttle' into 'master'
