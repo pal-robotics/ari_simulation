@@ -2,12 +2,10 @@
 <launch>
   <arg name="public_sim"     default="false"/>
   <arg name="tf_prefix" default=""/>
-  <!--arg name="use_moveit_camera" default="false"/-->
 
   <!-- Joint trajectory and diff drive controllers -->
   <rosparam command="load" file="$(find ari_controller_configuration_gazebo)/config/mobile_base_controller.yaml"/>
   <include file="$(find ari_controller_configuration_gazebo)/launch/ari_controllers.launch">
-    <!--arg name="use_moveit_camera" value="$(arg use_moveit_camera)"/-->
     <arg name="tf_prefix" value="$(arg tf_prefix)"/>
   </include>
 
@@ -23,8 +21,9 @@
   <!-- Twist mux -->
   <include file="$(find ari_bringup)/launch/twist_mux.launch"/>
 
-  <!-- Republish image_raw to image_rect_color to have the same available topic -->
-  <node name="image_raw_to_rect_color_relay" pkg="topic_tools" type="relay" args="torso_front_camera/rgb/image_raw torso_front_camera/rgb/image_rect_color" />
-  <!--node name="image_raw_to_rect_color_relay_back" pkg="topic_tools" type="relay" args="torso_back_camera/rgb/image_raw torso_back_camera/rgb/image_rect_color" /-->
+  <!-- pointcloud to laserscan-->
+  <include file="$(find ari_rgbd_sensors)/launch/rgbd_cloud_laser.launch">
+    <arg name="cloud" value="/torso_front_camera/depth/color/points"/>
+  </include>
 
 </launch>

@@ -11,11 +11,6 @@
 
   <rosparam command="load" file="$(find ari_controller_configuration_gazebo)/config/hardware_gazebo/ari_pal_hardware_gazebo_arm.yaml"/>
 
-  <!-- Joystick controller parameters -->
-  <!--
-  <rosparam file="$(find ari_gazebo)/config/joy_teleop_sim.yaml" command="load"/>
-  -->
-
   <!-- Robot model -->
   <include file="$(find ari_description)/robots/upload.launch">
     <arg name="multi"  value="$(arg multi)"/>

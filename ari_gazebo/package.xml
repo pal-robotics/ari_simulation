@@ -16,9 +16,6 @@
   <exec_depend>ari_bringup</exec_depend>
   <exec_depend>ari_controller_configuration_gazebo</exec_depend>
   <exec_depend>ari_description</exec_depend>
-  <exec_depend>pal_pcl_points_throttle_and_filter</exec_depend>
   <exec_depend>realsense_gazebo_plugin</exec_depend>
-  <!--exec_depend>rospy</exec_depend>
-  <exec_depend>play_motion_msgs</exec_depend-->
 
 </package>
