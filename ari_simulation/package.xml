@@ -9,9 +9,10 @@
 
   <buildtool_depend>catkin</buildtool_depend>
 
+  <exec_depend>ari_2dnav_gazebo</exec_depend>
+  <exec_depend>ari_controller_configuration_gazebo</exec_depend>
   <exec_depend>ari_gazebo</exec_depend>
-  <exec_depend>pal_hardware_gazebo</exec_depend>
-
+  
   <export>
      <metapackage/>
   </export>
