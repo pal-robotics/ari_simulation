@@ -2,6 +2,9 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.2 (2020-03-13)
 ------------------
 * Merge branch 'cleaned-up-ari-simulation' into 'master'

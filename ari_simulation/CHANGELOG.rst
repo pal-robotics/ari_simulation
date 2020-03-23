@@ -2,6 +2,9 @@
 Changelog for package ari_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.2 (2020-03-13)
 ------------------
 * Merge branch 'fix-deps' into 'master'
