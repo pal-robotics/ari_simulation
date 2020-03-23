@@ -2,8 +2,8 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.3 (2020-03-23)
+------------------
 * Merge branch 'fix-deps' into 'ferrum-devel'
   added playmotion and actionlib deps
   See merge request robots/ari_simulation!9
