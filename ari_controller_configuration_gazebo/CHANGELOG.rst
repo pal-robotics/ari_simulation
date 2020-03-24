@@ -2,6 +2,16 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ari_end_effector' into 'ferrum-devel'
+  Ari end effector
+  See merge request robots/ari_simulation!7
+* improve fingers pid values
+* Separate hands
+* Add param for en_effector
+* Contributors: YueErro, davidfernandez
+
 0.0.3 (2020-03-23)
 ------------------
 * Merge branch 'fix-deps' into 'ferrum-devel'
