@@ -13,7 +13,7 @@ gains:
   arm_right_3_joint: {p: 3000, d: 0, i: 0,   i_clamp: 3, torque_clamp: 50}
   arm_right_4_joint: {p: 3000, d: 0, i: 0,   i_clamp: 3, torque_clamp: 50}
 
-  hand_left_fingers_joint: &finger_gains {p: 50, d: 0.1, i: 0.1, i_clamp: 1}
+  hand_left_fingers_joint: &finger_gains {p: 9.5, d: 0, i: 5, i_clamp: 0}
   hand_left_virtual_1_joint: *finger_gains
   hand_left_virtual_2_joint: *finger_gains
 
@@ -27,4 +27,3 @@ velocity:
      wheel_left_joint:  {p: 30,  d: 0, i: 0, i_clamp: 1.0}
      caster_left_joint: {p: 0,  d: 0,  i: 0, i_clamp: 0}
      caster_right_joint: {p: 0,  d: 0,  i: 0, i_clamp: 0}
-
