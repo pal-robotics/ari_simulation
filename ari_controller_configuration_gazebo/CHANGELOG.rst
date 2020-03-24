@@ -2,8 +2,8 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2020-03-24)
+------------------
 * Merge branch 'ari_end_effector' into 'ferrum-devel'
   Ari end effector
   See merge request robots/ari_simulation!7
