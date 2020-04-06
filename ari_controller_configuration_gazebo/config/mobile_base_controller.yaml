@@ -21,6 +21,11 @@ mobile_base_controller:
   # Publish wheel data
   publish_wheel_data: true
 
+  #Do not publish odom base footprint tf
+
+  enable_odom_tf: false
+
+
   # Velocity and acceleration limits
   # Whenever a min_* is unspecified, default to -max_*
   linear:
