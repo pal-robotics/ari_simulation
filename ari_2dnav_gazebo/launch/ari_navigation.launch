@@ -51,6 +51,10 @@
           args="-d $(find ari_2dnav)/config/rviz/navigation$(arg sim_sufix).rviz"/>
   </group>
 
+  <group if="$(arg public_sim)">
+    <include file="$(find robot_pose)/launch/fake_odom.launch"/>
+  </group>
+  
   <group if="$(arg advanced_navigation)">
     <!-- Advanced navigation -->
     <node pkg="pal_zoi_detector" type="zoi_detector_node" name="zoi_detector" />

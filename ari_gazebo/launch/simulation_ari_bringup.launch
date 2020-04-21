@@ -13,6 +13,11 @@
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
   </include>
 
+  <!-- Will use fake odom -->
+  <group if="$(arg public_sim)">
+    <param name="enable_odom_tf" value="false"/>
+  </group>
+
   <!-- Robot state publisher -->
   <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher">
     <param name="publish_frequency" type="double" value="50.0"/>
