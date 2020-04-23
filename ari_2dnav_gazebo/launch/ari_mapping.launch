@@ -9,7 +9,7 @@
   <arg name="planner"        default="base"/>
   <arg name="global_planner" default="global_planner"/>
   <arg name="local_planner"  default="teb"/>
-  <arg name="mapping"        default="$(eval 'gmapping' if arg('public_sim') else 'karto')"/>
+  <arg name="mapping"        default="$(eval 'slam_toolbox' if arg('public_sim') else 'karto')"/>
 
   <arg name="rviz"     default="true"/>
   <arg name="gzclient" default="true"/>
