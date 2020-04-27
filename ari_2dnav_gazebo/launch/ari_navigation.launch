@@ -13,7 +13,7 @@
   <arg name="local_planner"  default="teb"/>
   <arg name="localization"   default="amcl"/>
   <arg name="map"            default="$(env HOME)/.pal/ari_maps/configurations/$(arg world)"/>
-
+  <arg name="pub_freq"       default="5"/>
   <arg name="rviz"     default="true"/>
   <arg name="gzclient" default="true"/>
   <arg name="recording" default="false"/>
@@ -52,7 +52,9 @@
   </group>
 
   <group if="$(arg public_sim)">
-    <include file="$(find robot_pose)/launch/fake_odom.launch"/>
+    <include file="$(find robot_pose)/launch/fake_odom.launch">
+      <arg name="pub_freq" value="$(arg pub_freq)"/>
+    </include>
   </group>
 
 </launch>
