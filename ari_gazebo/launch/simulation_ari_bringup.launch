@@ -31,16 +31,18 @@
   <include file="$(find ari_bringup)/launch/twist_mux.launch"/>
 
   <!-- pointcloud to laserscan -->
-  <include file="$(find ari_rgbd_sensors)/launch/rgbd_cloud_laser.launch">
-    <arg name="cloud" value="/torso_front_camera/depth/color/points"/>
-  </include>
+  <group if="$(arg public_sim)">
+    <include file="$(find ari_rgbd_sensors)/launch/rgbd_cloud_laser.launch">
+      <arg name="cloud" value="/torso_front_camera/depth/color/points"/>
+    </include>
+  </group>  
 
-  
   <!--Register depth with color-->
-  <include file="$(find ari_rgbd_sensors)/launch/register_depth.launch">
-    <arg name="camera_name" value="torso_front_camera"/>
-  </include>
-  
+  <group unless="$(arg public_sim)">
+    <include file="$(find ari_rgbd_sensors)/launch/register_depth.launch">
+      <arg name="camera_name" value="torso_front_camera"/>
+    </include>
+  </group>
   
 
 </launch>
