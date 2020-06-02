@@ -2,8 +2,8 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2020-06-02)
+------------------
 * Merge branch 'slam-toolbox-mapping' into 'ferrum-devel'
   Slam toolbox mapping
   See merge request robots/ari_simulation!13

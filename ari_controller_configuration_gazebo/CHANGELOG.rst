@@ -2,8 +2,8 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2020-06-02)
+------------------
 * Use robot_pose package's fake odom publisher when public_sim is true
 * Fake odometry to base footprint publisher
 * Contributors: Sara Cooper
