@@ -2,6 +2,23 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'slam-toolbox-mapping' into 'ferrum-devel'
+  Slam toolbox mapping
+  See merge request robots/ari_simulation!13
+* Fixes
+* Cosmetics
+* Set fake-odom to publish at 5 Hz
+* Remove advanced navigation section
+* Use slam_toolbox for public_sim set to true
+* Merge branch 'fake-odom' into 'ferrum-devel'
+  Fake odometry publisher for public sim
+  See merge request robots/ari_simulation!11
+* cosmetic
+* Use robot_pose package's fake odom publisher when public_sim is true
+* Contributors: Procópio Stein, Sara Cooper, procopiostein
+
 0.0.4 (2020-03-24)
 ------------------
 

@@ -2,6 +2,12 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Use robot_pose package's fake odom publisher when public_sim is true
+* Fake odometry to base footprint publisher
+* Contributors: Sara Cooper
+
 0.0.4 (2020-03-24)
 ------------------
 * Merge branch 'ari_end_effector' into 'ferrum-devel'

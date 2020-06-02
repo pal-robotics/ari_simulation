@@ -2,6 +2,25 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'slam-toolbox-mapping' into 'ferrum-devel'
+  Slam toolbox mapping
+  See merge request robots/ari_simulation!13
+* Publish rgbd scan or registered color based on public sim
+* Correct TF and rgbd_scan publications
+* Merge branch 'fake-odom' into 'ferrum-devel'
+  Fake odometry publisher for public sim
+  See merge request robots/ari_simulation!11
+* cosmetic
+* Use robot_pose package's fake odom publisher when public_sim is true
+* Merge branch 'depth-registered-topic' into 'ferrum-devel'
+  Add launch of depth-image-proc
+  See merge request robots/ari_simulation!10
+* updated call to launch file for depth registration
+* Add launch of depth-image-proc
+* Contributors: Procópio Stein, Sara Cooper, federiconardi, procopiostein
+
 0.0.4 (2020-03-24)
 ------------------
 * Merge branch 'ari_end_effector' into 'ferrum-devel'
