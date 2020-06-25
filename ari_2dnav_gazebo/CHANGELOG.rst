@@ -2,6 +2,11 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* changing default world and localization args
+* Contributors: Federico Nardi
+
 0.0.5 (2020-06-02)
 ------------------
 * Merge branch 'slam-toolbox-mapping' into 'ferrum-devel'
