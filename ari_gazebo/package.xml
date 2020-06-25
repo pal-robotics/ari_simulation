@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>ari_gazebo</name>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
   <description>The ari_gazebo package</description>
   <maintainer email="alessandro.difava@pal-robotics.com">Alessandro Di Fava</maintainer>
   <maintainer email="victor.lopez@pal-robotics.com">Victor Lopez</maintainer>
