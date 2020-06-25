@@ -3,7 +3,7 @@
   <arg name="namespace"      default="/"/>
   <arg name="public_sim"     default="false"/>
   <arg name="laser_model"    default="rgbd_scan"/>
-  <arg name="world"          default="small_office"/>
+  <arg name="world"          default="featured"/>
   <arg name="lost"           default="false"/>
   <arg name="gzpose"         default="-x 0.0  -y   0.0 -z  0.0   -R 0.0 -P 0.0 -Y  0.0" unless="$(arg lost)"/>
   <arg name="gzpose"         default="-x 0.78 -y -11.1 -z -0.003 -R 0.0 -P 0.0 -Y 70.0" if="$(arg lost)"/>
@@ -11,7 +11,7 @@
   <arg name="planner"        default="base"/>
   <arg name="global_planner" default="global_planner"/>
   <arg name="local_planner"  default="teb"/>
-  <arg name="localization"   default="amcl"/>
+  <arg name="localization"   default="orb_sim"/>
   <arg name="map"            default="$(env HOME)/.pal/ari_maps/configurations/$(arg world)"/>
   <arg name="fake_odom_pub_freq"       default="5"/>
   <arg name="rviz"                     default="true"/>
