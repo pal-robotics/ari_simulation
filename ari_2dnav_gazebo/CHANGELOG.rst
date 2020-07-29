@@ -2,6 +2,14 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix_public_sim' into 'ferrum-devel'
+  Use non-ORBSLAM for public sim
+  See merge request robots/ari_simulation!15
+* Use non-ORBSLAM for public sim
+* Contributors: davidfernandez, victor
+
 0.0.6 (2020-06-25)
 ------------------
 * changing default world and localization args
