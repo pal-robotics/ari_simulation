@@ -5,6 +5,7 @@
   <arg name="model_name" default="ari"/>
   <arg name="end_effector_right" default="ari-hand"/>
   <arg name="end_effector_left" default="ari-hand"/>
+  <arg name="spring_cameras" default="false"/>
 
   <rosparam ns="pal_robot_info" param="type">"ari"</rosparam>
 
@@ -18,6 +19,7 @@
     <arg name="multi"  value="$(arg multi)"/>
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
+    <arg name="spring_cameras" default="$(arg spring_cameras)"/>
   </include>
 
   <!-- Spawn robot in Gazebo -->
