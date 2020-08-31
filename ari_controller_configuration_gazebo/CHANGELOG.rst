@@ -2,6 +2,9 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.7 (2020-07-29)
 ------------------
 
