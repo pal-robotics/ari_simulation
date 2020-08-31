@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.8 (2020-08-31)
+------------------
 * Add ari_rgbd_sensors dependency
 * Merge branch 'spring_cameras' into 'ferrum-devel'
   Add SPRING cameras

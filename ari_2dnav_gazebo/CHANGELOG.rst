@@ -2,8 +2,8 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.8 (2020-08-31)
+------------------
 * Merge branch 'spring_cameras' into 'ferrum-devel'
   Add SPRING cameras
   See merge request robots/ari_simulation!16
