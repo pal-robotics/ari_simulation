@@ -6,7 +6,7 @@
   <arg name="end_effector_right" default="ari-hand"/>
   <arg name="end_effector_left" default="ari-hand"/>
   <arg name="spring_cameras" default="false"/>
-
+  <arg name="camera_model" default="head-rgb"/>
   <rosparam ns="pal_robot_info" param="type">"ari"</rosparam>
 
   <!-- PID gains -->
@@ -20,6 +20,7 @@
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
     <arg name="spring_cameras" default="$(arg spring_cameras)"/>
+    <arg name="camera_model" default="$(arg camera_model)"/>
   </include>
 
   <!-- Spawn robot in Gazebo -->
