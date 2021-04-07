@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.9 (2021-04-07)
+------------------
 * Merge branch 'head-realsense' into 'ferrum-devel'
   Add camera model parameter to set Head Rgb or RGBD camera
   See merge request robots/ari_simulation!18
