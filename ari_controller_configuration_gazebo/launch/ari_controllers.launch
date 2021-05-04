@@ -4,6 +4,7 @@
     <arg name="tf_prefix"         default=""/>
   <arg name="end_effector_right" default="ari-hand"/>
   <arg name="end_effector_left" default="ari-hand"/>
+  <arg name="laser_model" default="No"/>
 
     <include file="$(find ari_controller_configuration_gazebo)/launch/default_controllers.launch">
         <arg name="tf_prefix" value="$(arg tf_prefix)"/>
@@ -12,7 +13,9 @@
     </include>
 
     <!-- Motion planning -->
-    <include file="$(find ari_moveit_config)/launch/move_group.launch"/>
+    <include file="$(find ari_moveit_config)/launch/move_group.launch">
+         <arg name="laser_model" value="$(arg laser_model)"/>
+    </include>
 
     <!-- Play motion -->
     <include file="$(find ari_bringup)/launch/play_motion.launch"/>

@@ -43,6 +43,7 @@
     <arg name="public_sim"  value="$(arg public_sim)"/>
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
+    <arg name="laser_model" value="$(arg laser_model)"/>
   </include>
 
 </launch>
