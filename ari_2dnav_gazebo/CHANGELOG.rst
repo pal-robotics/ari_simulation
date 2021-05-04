@@ -2,6 +2,9 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.0.9 (2021-04-07)
+------------------
+
 0.0.8 (2020-08-31)
 ------------------
 * Merge branch 'spring_cameras' into 'ferrum-devel'
