@@ -13,7 +13,6 @@
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
     <arg name="laser_model" value="$(arg laser_model)"/>
-
   </include>
 
   <!-- Will use fake odom -->
