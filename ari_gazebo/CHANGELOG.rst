@@ -2,6 +2,26 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ari_laser_new' into 'ferrum-devel'
+  Ari laser new
+  See merge request robots/ari_simulation!20
+* Update ari_gazebo/launch/ari_spawn.launch
+* Update ari_gazebo/launch/simulation_ari_bringup.launch
+* Rebase
+* Added laser_model dependencies
+* Rebase
+* Change to support sick-571 laser in ari3
+* Merge branch 'ferrum-devel' into 'ari_laser_new'
+  # Conflicts:
+  #   ari_gazebo/launch/ari_gazebo.launch
+  #   ari_gazebo/launch/ari_spawn.launch
+* Added laser_model dependencies
+* Added laser_model dependencies
+* Change to support sick-571 laser in ari3
+* Contributors: Software Engineer, davidfernandez, sergiomoyano
+
 0.0.9 (2021-04-07)
 ------------------
 * Merge branch 'head-realsense' into 'ferrum-devel'

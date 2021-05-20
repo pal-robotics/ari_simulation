@@ -2,6 +2,19 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ari_laser_new' into 'ferrum-devel'
+  Ari laser new
+  See merge request robots/ari_simulation!20
+* Added laser_model dependencies
+* Merge branch 'ferrum-devel' into 'ari_laser_new'
+  # Conflicts:
+  #   ari_gazebo/launch/ari_gazebo.launch
+  #   ari_gazebo/launch/ari_spawn.launch
+* Added laser_model dependencies
+* Contributors: davidfernandez, sergiomoyano
+
 0.0.9 (2021-04-07)
 ------------------
 

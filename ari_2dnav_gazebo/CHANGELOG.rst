@@ -2,6 +2,20 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ari_laser_new' into 'ferrum-devel'
+  Ari laser new
+  See merge request robots/ari_simulation!20
+* navigation using laser scanner
+* Rebase
+* Merge branch 'ferrum-devel' into 'ari_laser_new'
+  # Conflicts:
+  #   ari_gazebo/launch/ari_gazebo.launch
+  #   ari_gazebo/launch/ari_spawn.launch
+* Added laser_model dependencies
+* Contributors: antoniobrandi, davidfernandez, sergiomoyano
+
 0.0.9 (2021-04-07)
 ------------------
 

@@ -2,6 +2,14 @@
 Changelog for package ari_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ferrum-devel' into 'ari_laser_new'
+  # Conflicts:
+  #   ari_gazebo/launch/ari_gazebo.launch
+  #   ari_gazebo/launch/ari_spawn.launch
+* Contributors: sergiomoyano
+
 0.0.9 (2021-04-07)
 ------------------
 
