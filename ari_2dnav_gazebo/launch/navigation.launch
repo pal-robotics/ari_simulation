@@ -12,19 +12,21 @@
   <arg name="public_sim"     default="false"/>
   <arg name="disable_vo"     default="false"/>
   <arg name="config_base_path" default="$(find pal_navigation_cfg_ari)"/>
-  <arg name="laser_model"    default="rgbd_scan"/>
-  <arg name="tf_prefix"    default=""/>
+  <arg name="laser_model"    default="No"/>
+  <arg name="scan_topic"     default="rgbd_scan"/>
+  <arg name="tf_prefix"      default=""/>
 
   <arg name="map" default="$(env HOME)/.pal/ari_maps/config"/>
 
   <!-- Localization or Mapping state -->
   <node pkg="pal_navigation_sm" type="navigation.sh" name="navigation"
-        args="ari $(arg state) $(arg localization) $(arg mapping) $(arg map) $(arg octomap)" output="screen"/>
+        args="ari $(arg state) $(arg localization) $(arg mapping) $(arg map) $(arg octomap) $(arg scan_topic) $(arg laser_model)" output="screen"/>
 
   <!-- Navigation State Machine -->
   <include file="$(find ari_2dnav)/launch/state_machine.launch">
     <arg name="state" value="$(arg state)"/>
     <arg name="public_sim" value="$(arg public_sim)"/>
+    <arg name="laser_model" value="$(arg laser_model)"/>
   </include>
 
   <!-- Planning -->
@@ -33,6 +35,7 @@
     <arg name="global_planner" value="$(arg global_planner)"/>
     <arg name="local_planner"  value="$(arg local_planner)"/>
     <arg name="public_sim" value="$(arg public_sim)"/>
+    <arg name="laser_model" value="$(arg laser_model)"/>
   </include>
 
   <!-- VO map server -->

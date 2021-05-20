@@ -13,6 +13,7 @@
   <arg name="end_effector_left" default="ari-hand"/>
   <arg name="spring_cameras" default="false"/>
   <arg name="camera_model" default="head-rgb"/>
+  <arg name="laser_model"  default="No"/>
   <env name="LC_NUMERIC" value="C" />
 
   <!-- start up world -->
@@ -34,6 +35,7 @@
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
     <arg name="spring_cameras" value="$(arg spring_cameras)"/>
     <arg name="camera_model" value="$(arg camera_model)"/>
+    <arg name="laser_model" value="$(arg laser_model)"/>
   </include>
 
   <!-- bring up robot -->
@@ -41,6 +43,7 @@
     <arg name="public_sim"  value="$(arg public_sim)"/>
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
+    <arg name="laser_model" value="$(arg laser_model)"/>
   </include>
 
 </launch>
