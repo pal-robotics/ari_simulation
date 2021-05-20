@@ -2,8 +2,8 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.10 (2021-05-20)
+-------------------
 * Merge branch 'ari_laser_new' into 'ferrum-devel'
   Ari laser new
   See merge request robots/ari_simulation!20
