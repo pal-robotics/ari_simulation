@@ -3,7 +3,7 @@
 
   <arg name="mapping"     default="karto"/>
   <arg name="scan_topic"  default="rgbd_scan"/>
-  <arg name="laser_model" default="No"/>
+  <arg name="laser_model" default="false"/>
 
   <!-- SLAM -->
   <include file="$(find ari_2dnav)/launch/mapping.launch">

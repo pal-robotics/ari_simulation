@@ -4,7 +4,7 @@
   <arg name="tf_prefix" default=""/>
   <arg name="end_effector_right" default="ari-hand"/>
   <arg name="end_effector_left" default="ari-hand"/>
-  <arg name="laser_model" default="No"/>
+  <arg name="laser_model" default="false"/>
   
   <!-- Joint trajectory and diff drive controllers -->
   <rosparam command="load" file="$(find ari_controller_configuration_gazebo)/config/mobile_base_controller.yaml"/>
