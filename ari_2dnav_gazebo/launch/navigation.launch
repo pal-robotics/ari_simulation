@@ -54,8 +54,7 @@
   <!-- Laser filter (empty for public sim) -->
    <node name="laser_filter" pkg="laser_filters" type="scan_to_scan_filter_chain">
     <rosparam if="$(arg laser_model)" file="$(find ari_laser_sensors)/config/$(arg laser_model)_filter.yaml" 
-              command="load" 
-              unless="$(eval arg('public_sim'))"/> 
+              command="load"/> 
     <remap from="scan"          to="scan_raw"/>
     <remap from="scan_filtered" to="scan"/>
   </node>
