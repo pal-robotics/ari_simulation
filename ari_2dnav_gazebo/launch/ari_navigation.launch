@@ -28,6 +28,7 @@
   <arg name="sim_sufix" value="_public_sim"     if="$(arg public_sim)"/>
   <arg name="sim_sufix" value=""                unless="$(arg public_sim)"/>
   <env name="PAL_HOST" value="ari" />
+  <arg name="camera_model_head" default="raspi"/>
 
   <node name="update_maps_link" pkg="pal_navigation_sm" type="base_maps_symlink.sh" args="ari_maps"/>
 
@@ -44,6 +45,7 @@
       <arg name="end_effector_left" value="$(arg end_effector_left)"/>
       <arg name="spring_cameras" value="$(arg spring_cameras)"/>
       <arg name="laser_model" value="$(arg laser_model)"/>
+      <arg name="camera_model_head" value="$(arg camera_model_head)"/>
     </include>
 
     <include file="$(find ari_2dnav_gazebo)/launch/navigation.launch">
