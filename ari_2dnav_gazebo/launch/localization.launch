@@ -6,6 +6,7 @@
   <arg name="map"     default="$(env HOME)/.pal/ari_maps/config"/>
   <arg name="symlink" default="$(env HOME)/.pal/ari_maps/config"/>
   <arg name="scan_topic" default="rgbd_scan"/>
+  <arg name="laser_model" default="false"/>
   <arg name="map_topic" default="vo_map"/>
   <arg name="mapping" default=""/>
 
@@ -19,6 +20,7 @@
   <include file="$(find ari_2dnav)/launch/localization.launch">
     <arg name="localization" value="$(arg localization)"/>
     <arg name="scan_topic" value="$(arg scan_topic)"/>
+    <arg name="laser_model" value="$(arg laser_model)"/>
     <arg name="map_topic" value="$(arg map_topic)"/>
   </include>
 
