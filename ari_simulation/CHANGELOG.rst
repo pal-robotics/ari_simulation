@@ -2,6 +2,9 @@
 Changelog for package ari_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.10 (2021-05-20)
 -------------------
 * Merge branch 'ferrum-devel' into 'ari_laser_new'

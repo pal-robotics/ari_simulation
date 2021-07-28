@@ -2,6 +2,21 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ari_laser_new' into 'ferrum-devel'
+  Fixing navigation of the robot in the simulated environment
+  See merge request robots/ari_simulation!21
+* Passing down the laser_model param to localization launch files
+* Fix typos
+* Rename camera model
+* Fixing bug when laser_model false
+* laser_filters node runned only if laser_model is not false
+* fixed small bug
+* Fixed laser_model set default false
+* Fixing navigation of the robot in the simulated environment
+* Contributors: antoniobrandi, davidfernandez, saikishor
+
 0.0.10 (2021-05-20)
 -------------------
 * Merge branch 'ari_laser_new' into 'ferrum-devel'

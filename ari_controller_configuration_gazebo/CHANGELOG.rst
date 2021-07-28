@@ -2,6 +2,15 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ari_laser_new' into 'ferrum-devel'
+  Fixing navigation of the robot in the simulated environment
+  See merge request robots/ari_simulation!21
+* Fix typos
+* Fixed laser_model set default false
+* Contributors: antoniobrandi, davidfernandez, saikishor
+
 0.0.10 (2021-05-20)
 -------------------
 * Merge branch 'ari_laser_new' into 'ferrum-devel'
