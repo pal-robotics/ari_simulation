@@ -6,8 +6,8 @@
   <arg name="end_effector_right" default="ari-hand"/>
   <arg name="end_effector_left" default="ari-hand"/>
   <arg name="spring_cameras" default="false"/>
-  <arg name="camera_model" default="head-rgb"/>
-  <arg name="laser_model"  default="No"/>
+  <arg name="camera_model_head" default="raspi"/>
+  <arg name="laser_model"  default="false"/>
 
   <rosparam ns="pal_robot_info" param="type">"ari"</rosparam>
 
@@ -22,7 +22,7 @@
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
     <arg name="spring_cameras" default="$(arg spring_cameras)"/>
-    <arg name="camera_model" default="$(arg camera_model)"/>
+    <arg name="camera_model_head" default="$(arg camera_model_head)"/>
     <arg name="laser_model" value="$(arg laser_model)"/>
   </include>
 

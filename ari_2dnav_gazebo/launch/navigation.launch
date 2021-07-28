@@ -12,7 +12,7 @@
   <arg name="public_sim"     default="false"/>
   <arg name="disable_vo"     default="false"/>
   <arg name="config_base_path" default="$(find pal_navigation_cfg_ari)"/>
-  <arg name="laser_model"    default="No"/>
+  <arg name="laser_model"    default="false"/>
   <arg name="scan_topic"     default="rgbd_scan"/>
   <arg name="tf_prefix"      default=""/>
 
@@ -52,12 +52,10 @@
   </include>
 
   <!-- Laser filter (empty for public sim) -->
-   <!--<node name="laser_filter" pkg="laser_filters" type="scan_to_scan_filter_chain">
-    <rosparam file="$(find ari_laser_sensors)/config/$(arg laser_model)_filter.yaml" 
-              command="load" 
-              unless="$(eval arg('public_sim') or arg('multiple'))"/> 
+  <node if="$(eval str(laser_model) != 'False')" name="laser_filter" pkg="laser_filters" type="scan_to_scan_filter_chain">
+    <rosparam file="$(find ari_laser_sensors)/config/$(arg laser_model)_filter.yaml" command="load"/> 
     <remap from="scan"          to="scan_raw"/>
     <remap from="scan_filtered" to="scan"/>
-  </node> -->
+  </node>
 
 </launch>
