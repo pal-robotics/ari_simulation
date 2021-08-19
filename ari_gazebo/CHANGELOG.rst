@@ -2,6 +2,14 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'separate-spring-cameras' into 'ferrum-devel'
+  Separate spring_cameras parameter in two params
+  See merge request robots/ari_simulation!22
+* Separate spring_cameras parameter in two params
+* Contributors: davidfernandez, saikishor
+
 0.0.11 (2021-07-28)
 -------------------
 * Merge branch 'ari_laser_new' into 'ferrum-devel'
