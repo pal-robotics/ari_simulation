@@ -2,8 +2,8 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.12 (2021-08-19)
+-------------------
 * Merge branch 'separate-spring-cameras' into 'ferrum-devel'
   Separate spring_cameras parameter in two params
   See merge request robots/ari_simulation!22
