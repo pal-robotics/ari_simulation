@@ -12,6 +12,8 @@
   <arg name="end_effector_right" default="ari-hand"/>
   <arg name="end_effector_left" default="ari-hand"/>
   <arg name="spring_cameras" default="false"/>
+  <arg name="front_fisheye_camera" default="$(arg spring_cameras)"/>
+  <arg name="back_fisheye_camera" default="$(arg spring_cameras)"/>
   <arg name="camera_model_head" default="raspi"/>
   <arg name="laser_model"  default="false"/>
   <env name="LC_NUMERIC" value="C" />
@@ -33,7 +35,8 @@
     <arg name="gzpose" value="$(arg gzpose)"/>
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
-    <arg name="spring_cameras" value="$(arg spring_cameras)"/>
+    <arg name="front_fisheye_camera" value="$(arg front_fisheye_camera)"/>
+    <arg name="back_fisheye_camera" value="$(arg back_fisheye_camera)"/>
     <arg name="camera_model_head" value="$(arg camera_model_head)"/>
     <arg name="laser_model" value="$(arg laser_model)"/>
   </include>

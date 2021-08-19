@@ -19,6 +19,8 @@
   <arg name="end_effector_right" default="ari-hand"/>
   <arg name="end_effector_left" default="ari-hand"/>
   <arg name="spring_cameras" default="false"/>
+  <arg name="front_fisheye_camera" default="$(arg spring_cameras)"/>
+  <arg name="back_fisheye_camera" default="$(arg spring_cameras)"/>
 
   <arg name="sim_suffix" value="_public_sim"     if="$(arg public_sim)"/>
   <arg name="sim_suffix" value=""                unless="$(arg public_sim)"/>
@@ -37,7 +39,8 @@
       <arg name="extra_gazebo_args" value="$(arg extra_gazebo_args)"/>
       <arg name="end_effector_right" value="$(arg end_effector_right)"/>
       <arg name="end_effector_left" value="$(arg end_effector_left)"/>
-      <arg name="spring_cameras" value="$(arg spring_cameras)"/>
+      <arg name="front_fisheye_camera" value="$(arg front_fisheye_camera)"/>
+      <arg name="back_fisheye_camera" value="$(arg back_fisheye_camera)"/>
       <arg name="laser_model" value="$(arg laser_model)"/>
       <arg name="camera_model_head" value="$(arg camera_model_head)"/>
     </include>
