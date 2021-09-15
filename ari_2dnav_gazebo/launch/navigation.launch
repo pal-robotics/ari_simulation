@@ -26,7 +26,7 @@
   <include file="$(find ari_2dnav)/launch/state_machine.launch">
     <arg name="state" value="$(arg state)"/>
     <arg name="public_sim" value="$(arg public_sim)"/>
-    <arg name="laser_model" value="$(arg laser_model)"/>
+    <!-- <arg name="laser_model" value="$(arg laser_model)"/> -->
   </include>
 
   <!-- Planning -->
@@ -53,7 +53,7 @@
 
   <!-- Laser filter (empty for public sim) -->
   <node if="$(eval str(laser_model) != 'False')" name="laser_filter" pkg="laser_filters" type="scan_to_scan_filter_chain">
-    <rosparam file="$(find ari_laser_sensors)/config/$(arg laser_model)_filter.yaml" command="load"/> 
+    <rosparam file="$(find ari_laser_sensors)/config/$(arg laser_model)_filter.yaml" command="load"/>
     <remap from="scan"          to="scan_raw"/>
     <remap from="scan_filtered" to="scan"/>
   </node>
