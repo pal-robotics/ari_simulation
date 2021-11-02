@@ -2,6 +2,14 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'thermal-camera' into 'ferrum-devel'
+  add has thermal param
+  See merge request robots/ari_simulation!23
+* add has thermal param
+* Contributors: Sara Cooper, davidfernandez
+
 0.0.12 (2021-08-19)
 -------------------
 * Merge branch 'separate-spring-cameras' into 'ferrum-devel'
