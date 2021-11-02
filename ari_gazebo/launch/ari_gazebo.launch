@@ -15,6 +15,7 @@
   <arg name="front_fisheye_camera" default="$(arg spring_cameras)"/>
   <arg name="back_fisheye_camera" default="$(arg spring_cameras)"/>
   <arg name="camera_model_head" default="raspi"/>
+  <arg name="has_thermal" default="false"/>
   <arg name="laser_model"  default="false"/>
   <env name="LC_NUMERIC" value="C" />
 
@@ -39,6 +40,7 @@
     <arg name="back_fisheye_camera" value="$(arg back_fisheye_camera)"/>
     <arg name="camera_model_head" value="$(arg camera_model_head)"/>
     <arg name="laser_model" value="$(arg laser_model)"/>
+    <arg name="has_thermal" value="$(arg has_thermal)"/>
   </include>
 
   <!-- bring up robot -->
