@@ -2,8 +2,8 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.14 (2022-02-23)
+-------------------
 * Merge branch 'layered_costmap' into 'ferrum-devel'
   Adapting to the new vo_server
   See merge request robots/ari_simulation!24
