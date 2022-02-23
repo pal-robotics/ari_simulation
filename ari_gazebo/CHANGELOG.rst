@@ -2,6 +2,9 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.13 (2021-11-02)
 -------------------
 * Merge branch 'thermal-camera' into 'ferrum-devel'
