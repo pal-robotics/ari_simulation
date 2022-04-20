@@ -2,22 +2,27 @@
 <launch>
     <arg name="public_sim"	       default="false"/>
     <arg name="tf_prefix"          default=""/>
-    <arg name="end_effector_right" default="ari-hand"/>
-    <arg name="end_effector_left"  default="ari-hand"/>
+    <arg name="robot_model"        default="v1"/>
+    <arg name="end_effector_right" default="$(eval {'v1': 'ari-hand', 'v2': 'false'}.get(arg('robot_model'), 'false'))"/>
+    <arg name="end_effector_left"  default="$(eval {'v1': 'ari-hand', 'v2': 'false'}.get(arg('robot_model'), 'false'))"/>
     <arg name="laser_model"        default="false"/>
 
     <include file="$(find ari_controller_configuration_gazebo)/launch/default_controllers.launch">
         <arg name="tf_prefix" value="$(arg tf_prefix)"/>
+        <arg name="robot_model" value="$(arg robot_model)"/>
         <arg name="end_effector_right" value="$(arg end_effector_right)"/>
         <arg name="end_effector_left" value="$(arg end_effector_left)"/>
     </include>
 
     <!-- Motion planning -->
     <include file="$(find ari_moveit_config)/launch/move_group.launch">
+        <arg name="robot_model" value="$(arg robot_model)"/>
         <arg name="laser_model" value="$(arg laser_model)"/>
     </include>
 
     <!-- Play motion -->
-    <include file="$(find ari_bringup)/launch/play_motion.launch"/>
+    <include file="$(find ari_bringup)/launch/play_motion.launch">
+        <arg name="robot_model" value="$(arg robot_model)"/>
+    </include>
 
 </launch>

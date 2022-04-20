@@ -9,8 +9,9 @@
   <arg name="public_sim" default="false"/>
   <arg name="recording" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
-  <arg name="end_effector_right" default="ari-hand"/>
-  <arg name="end_effector_left" default="ari-hand"/>
+  <arg name="robot_model" default="v1"/>
+  <arg name="end_effector_right" default="$(eval {'v1': 'ari-hand', 'v2': 'false'}.get(arg('robot_model'), 'false'))"/>
+  <arg name="end_effector_left" default="$(eval {'v1': 'ari-hand', 'v2': 'false'}.get(arg('robot_model'), 'false'))"/>
   <arg name="spring_cameras" default="false"/>
   <arg name="front_fisheye_camera" default="$(arg spring_cameras)"/>
   <arg name="back_fisheye_camera" default="$(arg spring_cameras)"/>
@@ -34,6 +35,7 @@
   <include file="$(find ari_gazebo)/launch/ari_spawn.launch">
     <arg name="multi" value="$(arg multi)"/>
     <arg name="gzpose" value="$(arg gzpose)"/>
+    <arg name="robot_model" value="$(arg robot_model)"/>
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
     <arg name="front_fisheye_camera" value="$(arg front_fisheye_camera)"/>
@@ -46,6 +48,7 @@
   <!-- bring up robot -->
   <include file="$(find ari_gazebo)/launch/simulation_ari_bringup.launch">
     <arg name="public_sim"  value="$(arg public_sim)"/>
+    <arg name="robot_model" value="$(arg robot_model)"/>
     <arg name="end_effector_right" value="$(arg end_effector_right)"/>
     <arg name="end_effector_left" value="$(arg end_effector_left)"/>
     <arg name="laser_model" value="$(arg laser_model)"/>
