@@ -12,7 +12,10 @@
   <arg name="laser_model"  default="false"/>
   <arg name="has_thermal" default="false"/>
 
-  <rosparam ns="pal_robot_info" param="type">"ari"</rosparam>
+  <rosparam ns="pal_robot_info" subst_value="true">
+    type: "ari"
+    robot_model: "$(arg robot_model)"
+  </rosparam>
 
   <!-- PID gains -->
   <rosparam command="load" file="$(find ari_controller_configuration_gazebo)/config/pids_$(arg robot_model).yaml"/>
