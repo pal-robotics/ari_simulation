@@ -2,6 +2,15 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ari-v2' into 'ferrum-devel'
+  update launch and config files for compatibility with ari-v2
+  See merge request robots/ari_simulation!26
+* update pal_robot_info with robot_model
+* update launch and config files for compatibility with ari-v2
+* Contributors: David ter Kuile, davidfernandez
+
 0.0.14 (2022-02-23)
 -------------------
 
