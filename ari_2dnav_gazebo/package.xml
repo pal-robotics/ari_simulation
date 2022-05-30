@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <name>ari_2dnav_gazebo</name>
-  <version>0.0.14</version>
+  <version>0.0.15</version>
   <description>ARI navigation launches and configs for simulation.</description>
   <maintainer email="procopio.stein@pal-robotics.com">Procopio Stein</maintainer>
   <maintainer email="sara.cooper@pal-robotics.com">Sara Cooper</maintainer>
