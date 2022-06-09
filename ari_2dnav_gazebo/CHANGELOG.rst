@@ -2,6 +2,9 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.15 (2022-05-30)
 -------------------
 * Merge branch 'ari-v2' into 'ferrum-devel'

@@ -2,6 +2,14 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'ari-v2' into 'ferrum-devel'
+  Add params for caster wheel joints in v2
+  See merge request robots/ari_simulation!27
+* Add params for caster wheel joints in v2
+* Contributors: Luca Marchionni, davidfernandez
+
 0.0.15 (2022-05-30)
 -------------------
 * Merge branch 'ari-v2' into 'ferrum-devel'
