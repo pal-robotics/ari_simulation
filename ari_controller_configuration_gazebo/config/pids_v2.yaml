@@ -20,5 +20,7 @@ velocity:
   pid_gains:
      wheel_right_joint: {p: 30,  d: 0, i: 0, i_clamp: 1.0}
      wheel_left_joint:  {p: 30,  d: 0, i: 0, i_clamp: 1.0}
-     caster_left_joint: {p: 0,  d: 0,  i: 0, i_clamp: 0}
-     caster_right_joint: {p: 0,  d: 0,  i: 0, i_clamp: 0}
+     caster_left_1_joint: {p: 0,  d: 0,  i: 0, i_clamp: 0}
+     caster_right_1_joint: {p: 0,  d: 0,  i: 0, i_clamp: 0}
+     caster_left_2_joint: {p: 0,  d: 0,  i: 0, i_clamp: 0}
+     caster_right_2_joint: {p: 0,  d: 0,  i: 0, i_clamp: 0}
