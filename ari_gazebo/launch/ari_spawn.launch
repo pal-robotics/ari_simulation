@@ -34,6 +34,7 @@
     <arg name="camera_model_head" default="$(arg camera_model_head)"/>
     <arg name="laser_model" value="$(arg laser_model)"/>
     <arg name="has_thermal" value="$(arg has_thermal)"/>
+    <arg name="simulation" value="true"/>
   </include>
 
   <!-- Spawn robot in Gazebo -->
