@@ -2,6 +2,15 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'nominal-extrinsics-fix' into 'ferrum-devel'
+  set nominal extrinsics to true for public sim
+  See merge request robots/ari_simulation!28
+* change parameter name
+* set nominal extrinsics to true for public sim
+* Contributors: saikishor, saracooper
+
 0.0.16 (2022-06-09)
 -------------------
 

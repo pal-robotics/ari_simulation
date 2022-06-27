@@ -2,6 +2,9 @@
 Changelog for package ari_controller_configuration_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.16 (2022-06-09)
 -------------------
 * Merge branch 'ari-v2' into 'ferrum-devel'
