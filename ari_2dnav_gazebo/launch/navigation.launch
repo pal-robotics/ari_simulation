@@ -14,12 +14,20 @@
   <arg name="laser_model"    default="false"/>
   <arg name="tf_prefix"      default=""/>
 
-  <arg name="map" default=""/>
+  <arg name="map" default="$(env HOME)/.pal/ari_maps/config"/>
 
   <!-- Map -->
-  <include file="$(find pal_map_manager)/launch/pal_map_manager.launch">
-    <arg name="map"       value="$(arg map)"/>
-  </include>
+  <!-- Localization or Mapping state -->
+  <group if="$(arg public_sim)">
+    <node pkg="pal_navigation_sm" type="navigation.sh" name="navigation"
+        args="ari $(arg state) $(arg localization) $(arg mapping) $(arg map) $(arg scan_topic) $(arg laser_model)" output="screen"/>
+  </group>
+
+  <group unless="$(arg public_sim)">
+    <include file="$(find pal_map_manager)/launch/pal_map_manager.launch">
+      <arg name="map"       value="$(arg map)"/>
+    </include>
+  </group>
 
   <!-- Navigation State Machine -->
   <include file="$(find ari_2dnav)/launch/state_machine.launch">

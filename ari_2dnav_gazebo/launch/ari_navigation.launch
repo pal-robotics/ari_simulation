@@ -14,7 +14,7 @@
   <arg name="planner"        default="base"/>
   <arg name="global_planner" default="global_planner"/>
   <arg name="local_planner"  default="teb"/>
-  <arg name="map"            default="$(arg world)"/>
+  <arg name="map"            default="$(env HOME)/.pal/ari_maps/configurations/$(arg world)"/>
   <arg name="fake_odom_pub_freq"       default="5"/>
   <arg name="rviz"                     default="true"/>
   <arg name="gzclient"                 default="true"/>
@@ -31,6 +31,10 @@
   <arg name="sim_sufix" value=""                unless="$(arg public_sim)"/>
   <env name="PAL_HOST" value="ari" />
   <arg name="camera_model_head" default="raspi"/>
+
+  <group if="$(arg public_sim)">
+    <node name="update_maps_link" pkg="pal_navigation_sm" type="base_maps_symlink.sh" args="tiago_dual_maps"/>
+  </group>
 
   <group ns="$(arg namespace)">
 
