@@ -2,6 +2,14 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'robot-state-publisher' into 'ferrum-devel'
+  rename node to robot-state-publisher
+  See merge request robots/ari_simulation!30
+* rename node to robot-state-publisher
+* Contributors: David ter Kuile, Jordan Palacios
+
 0.0.17 (2022-06-27)
 -------------------
 * Merge branch 'nominal-extrinsics-fix' into 'ferrum-devel'
