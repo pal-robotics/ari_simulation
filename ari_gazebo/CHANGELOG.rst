@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.18 (2023-01-23)
+-------------------
 * Merge branch 'robot-state-publisher' into 'ferrum-devel'
   rename node to robot-state-publisher
   See merge request robots/ari_simulation!30
