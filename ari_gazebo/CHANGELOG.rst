@@ -2,6 +2,9 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.18 (2023-01-23)
 -------------------
 * Merge branch 'robot-state-publisher' into 'ferrum-devel'

@@ -2,6 +2,16 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/map-manager' into 'ferrum-devel'
+  move to map manager
+  See merge request robots/ari_simulation!29
+* formatting
+* support to public simulation
+* move to map manager
+* Contributors: antoniobrandi
+
 0.0.18 (2023-01-23)
 -------------------
 
