@@ -2,6 +2,14 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/share-mmap' into 'ferrum-devel'
+  deprecating map_configuration_server
+  See merge request robots/ari_simulation!31
+* deprecating map_configuration_server
+* Contributors: antoniobrandi
+
 0.0.19 (2023-01-30)
 -------------------
 * Merge branch 'feat/map-manager' into 'ferrum-devel'
