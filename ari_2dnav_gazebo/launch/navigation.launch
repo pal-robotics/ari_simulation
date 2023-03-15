@@ -12,6 +12,7 @@
   <arg name="disable_vo"     default="false"/>
   <arg name="config_base_path" default="$(find pal_navigation_cfg_ari)"/>
   <arg name="laser_model"    default="false"/>
+  <arg name="scan_topic"     default="rgbd_scan"/>
   <arg name="tf_prefix"      default=""/>
 
   <arg name="map" default="$(env HOME)/.pal/ari_maps/config"/>
