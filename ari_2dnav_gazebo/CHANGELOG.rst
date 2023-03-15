@@ -2,6 +2,14 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/public-simulation-launch-files-bugs' into 'ferrum-devel'
+  fixed launch files bugs for public simulation
+  See merge request robots/ari_simulation!32
+* fixed launch files bugs for public simulation
+* Contributors: josegarcia
+
 0.0.20 (2023-02-23)
 -------------------
 * Merge branch 'feat/share-mmap' into 'ferrum-devel'
