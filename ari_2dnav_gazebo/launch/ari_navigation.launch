@@ -33,7 +33,7 @@
   <arg name="camera_model_head" default="raspi"/>
 
   <group if="$(arg public_sim)">
-    <node name="update_maps_link" pkg="pal_navigation_sm" type="base_maps_symlink.sh" args="tiago_dual_maps"/>
+    <node name="update_maps_link" pkg="pal_navigation_sm" type="base_maps_symlink.sh" args="ari_maps"/>
   </group>
 
   <group ns="$(arg namespace)">
