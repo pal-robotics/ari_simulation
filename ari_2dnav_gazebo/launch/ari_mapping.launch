@@ -2,7 +2,6 @@
 <launch>
   <arg name="namespace" default="/"/>
   <arg name="public_sim"   default="false"/>
-  <arg name="laser_model"  default="false"/>
   <arg name="world"  default="small_office"/>
   <arg name="gzpose" default="-x 0.0 -y 0.0 -z 0.0 -R 0.0 -P 0.0 -Y 0.0"/>
 
@@ -16,6 +15,7 @@
   <arg name="recording" default="false"/>
   <arg name="extra_gazebo_args" default=""/>
   <arg name="robot_model"  default="v1"/>
+  <arg name="laser_model"    default="$(eval {'v1': 'sick-571', 'v2': 'ydlidar-tg15'}.get(arg('robot_model'), 'false'))"/>
   <arg name="end_effector_right" default="$(eval {'v1': 'ari-hand', 'v2': 'false'}.get(arg('robot_model'), 'false'))"/>
   <arg name="end_effector_left" default="$(eval {'v1': 'ari-hand', 'v2': 'false'}.get(arg('robot_model'), 'false'))"/>
   <arg name="spring_cameras" default="false"/>
