@@ -2,8 +2,8 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.22 (2023-07-21)
+-------------------
 * Merge branch 'fix/default-world-small-office' into 'ferrum-devel'
   default world small_office and using only ARI with laser for navigation and mapping
   See merge request robots/ari_simulation!33
