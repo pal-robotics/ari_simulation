@@ -2,8 +2,8 @@
 Changelog for package ari_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.0 (2023-12-11)
+------------------
 * Merge branch 'ros2-port' into 'humble-devel'
   port ari_simulation to ROS2/Gazebo Harmonic
   See merge request robots/ari_simulation!34
