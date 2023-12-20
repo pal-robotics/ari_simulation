@@ -2,6 +2,14 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'abr/fix/world-name' into 'humble-devel'
+  move world_name to pal_gazebo_worlds
+  See merge request robots/ari_simulation!35
+* move world_name to pal_gazebo_worlds
+* Contributors: antoniobrandi
+
 2.0.0 (2023-12-11)
 ------------------
 * Merge branch 'ros2-port' into 'humble-devel'
