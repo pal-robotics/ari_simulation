@@ -69,12 +69,6 @@ def generate_launch_description():
         "moveit", default_value="false", description="Specify if launching MoveIt2"
     )
 
-    world_name_arg = DeclareLaunchArgument(
-        "world_name",
-        default_value="pal_office",
-        description="Specify world name, we'll convert to full path",
-    )
-
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
@@ -133,7 +127,6 @@ def generate_launch_description():
     # Using this prevents shared library from being found
     # ld.add_action(SetEnvironmentVariable('GAZEBO_RESOURCE_PATH', ari_resource_path))
 
-    ld.add_action(world_name_arg)
     ld.add_action(gazebo)
     ld.add_action(ari_spawn)
     ld.add_action(ari_bringup)
