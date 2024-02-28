@@ -2,6 +2,14 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'feat/launch_moveit_by_default' into 'humble-devel'
+  Launch MoveIt 2 by default
+  See merge request robots/ari_simulation!36
+* Launch MoveIt 2 by default
+* Contributors: Jordan Palacios, Noel Jimenez
+
 2.0.1 (2023-12-20)
 ------------------
 * Merge branch 'abr/fix/world-name' into 'humble-devel'
