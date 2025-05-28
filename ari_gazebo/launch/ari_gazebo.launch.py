@@ -109,7 +109,7 @@ def generate_launch_description():
     # @TODO: pal_pcl_points_throttle_and_filter
 
     packages = [
-        "ari_description",
+        "ari_description", "pal_urdf_utils"
     ]
     model_path = get_model_paths(packages)
     resource_path = get_resource_paths(packages)

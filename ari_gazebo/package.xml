@@ -22,6 +22,7 @@
   <exec_depend>play_motion2_msgs</exec_depend>
   <exec_depend>ari_bringup</exec_depend>
   <exec_depend>ari_description</exec_depend>
+  <exec_depend>pal_urdf_utils</exec_depend>
   <exec_depend>ari_moveit_config</exec_depend>
 <!-- TODO ROS2
   <exec_depend>ari_2dnav</exec_depend>
