@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.0.3 (2025-06-06)
+------------------
 * Add pal_urdf_utils as env var path for gazebo
 * Contributors: Aina
 
