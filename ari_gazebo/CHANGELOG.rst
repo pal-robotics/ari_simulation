@@ -2,6 +2,11 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Add pal_urdf_utils as env var path for gazebo
+* Contributors: Aina
+
 2.0.2 (2024-02-28)
 ------------------
 * Merge branch 'feat/launch_moveit_by_default' into 'humble-devel'
