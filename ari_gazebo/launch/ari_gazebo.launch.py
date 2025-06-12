@@ -43,8 +43,63 @@ class LaunchArguments(LaunchArgumentsBase):
     x: DeclareLaunchArgument = CommonArgs.x
     y: DeclareLaunchArgument = CommonArgs.y
     yaw: DeclareLaunchArgument = CommonArgs.yaw
+    navigation: DeclareLaunchArgument = CommonArgs.navigation
+    slam: DeclareLaunchArgument = CommonArgs.slam
     world_name: DeclareLaunchArgument = CommonArgs.world_name
     is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
+    
+def public_navigation(context, *args, **kwargs):
+    actions = []
+    ari_2dnav = get_package_share_directory('ari_2dnav')
+    pal_maps = get_package_share_directory('pal_maps')
+    world_name = read_launch_argument('world_name', context)
+    param_file = os.path.join(ari_2dnav, 'config', 'nav_public_sim.yaml')
+    map_path = os.path.join(pal_maps, 'maps', world_name, 'map.yaml')
+
+    # Navigation
+    nav2_bringup_launch = include_scoped_launch_py_description(
+        pkg_name='nav2_bringup',
+        paths=['launch', 'navigation_launch.py'],
+        launch_arguments={
+            'params_file': param_file,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+        }
+    )
+    actions.append(nav2_bringup_launch)
+
+    # Localization
+    loc_bringup_launch = include_scoped_launch_py_description(
+        pkg_name='nav2_bringup',
+        paths=['launch', 'localization_launch.py'],
+        launch_arguments={
+            'params_file': param_file,
+            'map': map_path,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+        },
+        condition=UnlessCondition(LaunchConfiguration('slam')),
+    )
+    actions.append(loc_bringup_launch)
+
+    # SLAM
+    slam_bringup_launch = include_scoped_launch_py_description(
+        pkg_name='nav2_bringup',
+        paths=['launch', 'slam_launch.py'],
+        launch_arguments={
+            'params_file': param_file,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+        },
+        condition=IfCondition(LaunchConfiguration('slam')),
+    )
+    actions.append(slam_bringup_launch)
+
+    # RViz
+    rviz_bringup_launch = include_scoped_launch_py_description(
+        pkg_name='nav2_bringup',
+        paths=['launch', 'rviz_launch.py'],
+    )
+    actions.append(rviz_bringup_launch)
+    return actions
+
 
 def generate_launch_description():
 
@@ -88,6 +143,19 @@ def declare_actions(
         })
 
     launch_description.add_action(gazebo)
+    
+    navigation = GroupAction(
+        condition=IfCondition(LaunchConfiguration('navigation')),
+        actions=[
+            # Public Navigation
+            OpaqueFunction(
+                function=public_navigation,
+                condition=IfCondition(LaunchConfiguration('is_public_sim'))
+            ),
+        ]
+    )
+    launch_description.add_action(navigation)
+   
 
     robot_spawn = include_scoped_launch_py_description(
         pkg_name='ari_gazebo',
@@ -102,14 +170,14 @@ def declare_actions(
 
     launch_description.add_action(robot_spawn)
 
-    pmb2_bringup = include_scoped_launch_py_description(
+    ari_bringup = include_scoped_launch_py_description(
         pkg_name='ari_bringup', paths=['launch', 'ari_bringup.launch.py'],
         launch_arguments={
             'use_sim_time': LaunchConfiguration('use_sim_time'),
         }
     )
 
-    launch_description.add_action(pmb2_bringup)
+    launch_description.add_action(ari_bringup)
 
 
 
