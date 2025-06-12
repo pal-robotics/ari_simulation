@@ -47,7 +47,88 @@ class LaunchArguments(LaunchArgumentsBase):
     slam: DeclareLaunchArgument = CommonArgs.slam
     world_name: DeclareLaunchArgument = CommonArgs.world_name
     is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
-    
+
+def private_navigation(context, *args, **kwargs):
+    actions = []
+    use_sim_time = read_launch_argument('use_sim_time', context)
+    rviz_cfg_pkg = 'ari_2dnav'
+
+    robot_info = {
+        "robot_info_publisher": {
+            "ros__parameters": {
+                "robot_type": "ari",
+                "laser_model": "ydlidar-tg15",
+                "use_sim_time": (use_sim_time == 'True'),
+            }
+        }
+    }
+
+    temp_yaml = tempfile.mkdtemp()
+    temp_robot_info = os.path.join(temp_yaml, '99_robot_info.yaml')
+    with open(temp_robot_info, 'w') as temp_robot_info_file:
+        yaml.safe_dump(robot_info, temp_robot_info_file)
+
+    # Robot Info Publisher
+    robot_info_env = SetEnvironmentVariable(
+        name='ROBOT_INFO_PATH',
+        value=temp_yaml,
+    )
+    actions.append(robot_info_env)
+
+    robot_info_publisher = Node(
+        package='robot_info_publisher',
+        executable='robot_info_publisher',
+        name='robot_info_publisher',
+        output='screen',
+    )
+    actions.append(robot_info_publisher)
+
+    # Laser Sensors
+    laser_bringup_launch = include_launch_py_description(
+        pkg_name='ari_laser_sensors',
+        paths=['launch', 'laser_sim.launch.py'],
+    )
+    actions.append(laser_bringup_launch)
+
+    # Navigation
+    nav_bringup_launch = include_launch_py_description(
+        pkg_name='ari_2dnav',
+        paths=['launch', 'navigation.launch.py'],
+    )
+    actions.append(nav_bringup_launch)
+
+    # Localization
+    loc_bringup_launch = include_launch_py_description(
+        pkg_name='ari_2dnav',
+        paths=['launch', 'localization.launch.py'],
+        condition=UnlessCondition(LaunchConfiguration('slam'))
+    )
+    actions.append(loc_bringup_launch)
+
+    # SLAM
+    slam_bringup_launch = include_launch_py_description(
+        pkg_name='ari_2dnav',
+        paths=['launch', 'slam.launch.py'],
+        condition=IfCondition(LaunchConfiguration('slam'))
+    )
+    actions.append(slam_bringup_launch)
+
+    # RViz
+    rviz_bringup_launch = Node(
+        package='rviz2',
+        executable='rviz2',
+        arguments=['-d', os.path.join(
+            get_package_share_directory(rviz_cfg_pkg),
+            'config',
+            'rviz',
+            'navigation.rviz',
+        )],
+        parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
+        output='screen',
+    )
+    actions.append(rviz_bringup_launch)
+    return actions
+
 def public_navigation(context, *args, **kwargs):
     actions = []
     ari_2dnav = get_package_share_directory('ari_2dnav')
@@ -147,6 +228,11 @@ def declare_actions(
     navigation = GroupAction(
         condition=IfCondition(LaunchConfiguration('navigation')),
         actions=[
+            # Private Navigation
+            OpaqueFunction(
+                function=private_navigation,
+                condition=UnlessCondition(LaunchConfiguration('is_public_sim'))
+            ),
             # Public Navigation
             OpaqueFunction(
                 function=public_navigation,
