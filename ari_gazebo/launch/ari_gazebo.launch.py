@@ -38,6 +38,7 @@ from launch_pal.include_utils import (
     include_launch_py_description,
 )
 
+
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
     x: DeclareLaunchArgument = CommonArgs.x
@@ -47,6 +48,8 @@ class LaunchArguments(LaunchArgumentsBase):
     slam: DeclareLaunchArgument = CommonArgs.slam
     world_name: DeclareLaunchArgument = CommonArgs.world_name
     is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
+    moveit: DeclareLaunchArgument = CommonArgs.moveit
+
 
 def private_navigation(context, *args, **kwargs):
     actions = []
@@ -129,6 +132,7 @@ def private_navigation(context, *args, **kwargs):
     actions.append(rviz_bringup_launch)
     return actions
 
+
 def public_navigation(context, *args, **kwargs):
     actions = []
     ari_2dnav = get_package_share_directory('ari_2dnav')
@@ -182,18 +186,6 @@ def public_navigation(context, *args, **kwargs):
     return actions
 
 
-def generate_launch_description():
-
-    # Create the launch description and populate
-    ld = LaunchDescription()
-    launch_arguments = LaunchArguments()
-
-    launch_arguments.add_to_launch_description(ld)
-
-    declare_actions(ld, launch_arguments)
-
-    return ld
-
 def declare_actions(
     launch_description: LaunchDescription, launch_args: LaunchArguments
 ):
@@ -206,7 +198,8 @@ def declare_actions(
     launch_description.add_action(public_sim_check)
 
     robot_name = 'ari'
-    packages = ['ari_description', 'pal_urdf_utils']
+    packages = ['ari_description', 'pal_urdf_utils',
+                'realsense2_description_deprecated']
 
     model_path = get_model_paths(packages)
 
@@ -224,7 +217,7 @@ def declare_actions(
         })
 
     launch_description.add_action(gazebo)
-    
+
     navigation = GroupAction(
         condition=IfCondition(LaunchConfiguration('navigation')),
         actions=[
@@ -241,7 +234,17 @@ def declare_actions(
         ]
     )
     launch_description.add_action(navigation)
-   
+
+    move_group = include_scoped_launch_py_description(
+        pkg_name='ari_moveit_config',
+        paths=['launch', 'move_group.launch.py'],
+        launch_arguments={
+            'robot_name': robot_name,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+        },
+        condition=IfCondition(LaunchConfiguration("moveit")))
+
+    launch_description.add_action(move_group)
 
     robot_spawn = include_scoped_launch_py_description(
         pkg_name='ari_gazebo',
@@ -266,7 +269,6 @@ def declare_actions(
     launch_description.add_action(ari_bringup)
 
 
-
 def get_model_paths(packages_names):
     model_paths = ''
     for package_name in packages_names:
@@ -282,3 +284,31 @@ def get_model_paths(packages_names):
         model_paths += pathsep + environ['GAZEBO_MODEL_PATH']
 
     return model_paths
+
+
+def get_resource_paths(packages_names):
+    resource_paths = ""
+    for package_name in packages_names:
+        if resource_paths != "":
+            resource_paths += pathsep
+
+        package_path = get_package_prefix(package_name)
+        resource_paths += package_path
+
+    if "GAZEBO_RESOURCE_PATH" in environ:
+        resource_paths += pathsep + environ["GAZEBO_RESOURCE_PATH"]
+
+    return resource_paths
+
+
+def generate_launch_description():
+
+    # Create the launch description and populate
+    ld = LaunchDescription()
+    launch_arguments = LaunchArguments()
+
+    launch_arguments.add_to_launch_description(ld)
+
+    declare_actions(ld, launch_arguments)
+
+    return ld
