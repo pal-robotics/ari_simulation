@@ -2,6 +2,17 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* linters
+* integrate advanced navigation and common launch structure
+* update package
+* linters
+* added private navigation
+* addd nav and fix typo
+* fix sim ari
+* Contributors: andreacapodacqua
+
 2.0.3 (2025-06-06)
 ------------------
 * Add pal_urdf_utils as env var path for gazebo

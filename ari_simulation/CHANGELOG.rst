@@ -2,6 +2,9 @@
 Changelog for package ari_simulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 2.0.3 (2025-06-06)
 ------------------
 
