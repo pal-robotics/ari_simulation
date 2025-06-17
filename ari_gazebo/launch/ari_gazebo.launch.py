@@ -53,18 +53,21 @@ class LaunchArguments(LaunchArgumentsBase):
     slam: DeclareLaunchArgument = CommonArgs.slam
     moveit: DeclareLaunchArgument = CommonArgs.moveit
     advanced_navigation: DeclareLaunchArgument = CommonArgs.advanced_navigation
-    #docking: DeclareLaunchArgument = CommonArgs.docking
+    # docking: DeclareLaunchArgument = CommonArgs.docking
     x: DeclareLaunchArgument = CommonArgs.x
     y: DeclareLaunchArgument = CommonArgs.y
     yaw: DeclareLaunchArgument = CommonArgs.yaw
 
+
 def private_navigation(context, *args, **kwargs):
     actions = []
     laser_model = read_launch_argument('laser_model', context)
-    torso_front_camera_model = read_launch_argument('torso_front_camera_model', context)
-    torso_back_camera_model = read_launch_argument('torso_back_camera_model', context)
+    torso_front_camera_model = read_launch_argument(
+        'torso_front_camera_model', context)
+    torso_back_camera_model = read_launch_argument(
+        'torso_back_camera_model', context)
     head_camera_model = read_launch_argument('head_camera_model', context)
-    #docking = read_launch_argument('docking', context)
+    # docking = read_launch_argument('docking', context)
     advanced_navigation = read_launch_argument('advanced_navigation', context)
     use_sim_time = read_launch_argument('use_sim_time', context)
     rviz_config_pkg = 'ari_2dnav'
@@ -80,7 +83,7 @@ def private_navigation(context, *args, **kwargs):
                 "torso_back_camera_model": torso_back_camera_model,
                 "head_camera_model": head_camera_model,
                 "advanced_navigation": (advanced_navigation == 'True'),
-                #"has_dock": (docking == 'True'),
+                # "has_dock": (docking == 'True'),
                 "use_sim_time": (use_sim_time == 'True'),
             }
         }
