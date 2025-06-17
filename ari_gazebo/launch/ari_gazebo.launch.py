@@ -38,29 +38,49 @@ from launch_pal.include_utils import (
     include_launch_py_description,
 )
 
+from ari_description.launch_arguments import AriArgs
+
 
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
+    laser_model: DeclareLaunchArgument = AriArgs.laser_model
+    torso_front_camera_model: DeclareLaunchArgument = AriArgs.torso_front_camera_model
+    torso_back_camera_model: DeclareLaunchArgument = AriArgs.torso_back_camera_model
+    head_camera_model: DeclareLaunchArgument = AriArgs.head_camera_model
+    is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
+    world_name: DeclareLaunchArgument = CommonArgs.world_name
+    navigation: DeclareLaunchArgument = CommonArgs.navigation
+    slam: DeclareLaunchArgument = CommonArgs.slam
+    moveit: DeclareLaunchArgument = CommonArgs.moveit
+    advanced_navigation: DeclareLaunchArgument = CommonArgs.advanced_navigation
+    #docking: DeclareLaunchArgument = CommonArgs.docking
     x: DeclareLaunchArgument = CommonArgs.x
     y: DeclareLaunchArgument = CommonArgs.y
     yaw: DeclareLaunchArgument = CommonArgs.yaw
-    navigation: DeclareLaunchArgument = CommonArgs.navigation
-    slam: DeclareLaunchArgument = CommonArgs.slam
-    world_name: DeclareLaunchArgument = CommonArgs.world_name
-    is_public_sim: DeclareLaunchArgument = CommonArgs.is_public_sim
-    moveit: DeclareLaunchArgument = CommonArgs.moveit
-
 
 def private_navigation(context, *args, **kwargs):
     actions = []
+    laser_model = read_launch_argument('laser_model', context)
+    torso_front_camera_model = read_launch_argument('torso_front_camera_model', context)
+    torso_back_camera_model = read_launch_argument('torso_back_camera_model', context)
+    head_camera_model = read_launch_argument('head_camera_model', context)
+    #docking = read_launch_argument('docking', context)
+    advanced_navigation = read_launch_argument('advanced_navigation', context)
     use_sim_time = read_launch_argument('use_sim_time', context)
-    rviz_cfg_pkg = 'ari_2dnav'
+    rviz_config_pkg = 'ari_2dnav'
+    if advanced_navigation == 'True':
+        rviz_config_pkg = 'ari_advanced_2dnav'
 
     robot_info = {
         "robot_info_publisher": {
             "ros__parameters": {
                 "robot_type": "ari",
-                "laser_model": "ydlidar-tg15",
+                "laser_model": laser_model,
+                "torso_front_camera_model": torso_front_camera_model,
+                "torso_back_camera_model": torso_back_camera_model,
+                "head_camera_model": head_camera_model,
+                "advanced_navigation": (advanced_navigation == 'True'),
+                #"has_dock": (docking == 'True'),
                 "use_sim_time": (use_sim_time == 'True'),
             }
         }
@@ -116,12 +136,40 @@ def private_navigation(context, *args, **kwargs):
     )
     actions.append(slam_bringup_launch)
 
+    # # # Docking
+    # docking_bringup_launch = include_launch_py_description(
+    #     pkg_name='ari_docking',
+    #     paths=['launch', 'docking_sim.launch.py'],
+    #     condition=IfCondition(LaunchConfiguration('docking'))
+    # )
+    # actions.append(docking_bringup_launch)
+
+    # # Stores Server
+    db_bringup_launch = Node(
+        package='pal_stores_server',
+        executable='pal_stores_server',
+        arguments=[os.path.join(
+            os.environ['HOME'], '.pal', 'stores.db'
+        )],
+        output='screen',
+        condition=IfCondition(LaunchConfiguration('advanced_navigation'))
+    )
+    actions.append(db_bringup_launch)
+
+    # # Advanced Navigation
+    advanced_nav_bringup_launch = include_launch_py_description(
+        pkg_name='ari_advanced_2dnav',
+        paths=['launch', 'advanced_navigation.launch.py'],
+        condition=IfCondition(LaunchConfiguration('advanced_navigation'))
+    )
+    actions.append(advanced_nav_bringup_launch)
+
     # RViz
     rviz_bringup_launch = Node(
         package='rviz2',
         executable='rviz2',
         arguments=['-d', os.path.join(
-            get_package_share_directory(rviz_cfg_pkg),
+            get_package_share_directory(rviz_config_pkg),
             'config',
             'rviz',
             'navigation.rviz',
