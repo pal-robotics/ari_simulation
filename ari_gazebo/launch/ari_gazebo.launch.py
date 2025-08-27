@@ -249,8 +249,7 @@ def declare_actions(
     launch_description.add_action(public_sim_check)
 
     robot_name = 'ari'
-    packages = ['ari_description', 'pal_urdf_utils',
-                'realsense2_description_deprecated']
+    packages = ['ari_description', 'pal_urdf_utils']
 
     model_path = get_model_paths(packages)
 
