@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.2.0 (2025-08-27)
+------------------
 * remove realsense overlays
 * Contributors: antoniobrandi
 
