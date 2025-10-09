@@ -57,6 +57,8 @@ class LaunchArguments(LaunchArgumentsBase):
     x: DeclareLaunchArgument = CommonArgs.x
     y: DeclareLaunchArgument = CommonArgs.y
     yaw: DeclareLaunchArgument = CommonArgs.yaw
+    rviz: DeclareLaunchArgument = CommonArgs.rviz
+    gzclient: DeclareLaunchArgument = CommonArgs.gzclient
 
 
 def private_navigation(context, *args, **kwargs):
@@ -179,6 +181,7 @@ def private_navigation(context, *args, **kwargs):
         )],
         parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
         output='screen',
+        condition=IfCondition(LaunchConfiguration('rviz'))
     )
     actions.append(rviz_bringup_launch)
     return actions
@@ -232,6 +235,7 @@ def public_navigation(context, *args, **kwargs):
     rviz_bringup_launch = include_scoped_launch_py_description(
         pkg_name='nav2_bringup',
         paths=['launch', 'rviz_launch.py'],
+        condition=IfCondition(LaunchConfiguration('rviz'))
     )
     actions.append(rviz_bringup_launch)
     return actions
@@ -264,6 +268,7 @@ def declare_actions(
             'world_name':  launch_args.world_name,
             'model_paths': packages,
             'resource_paths': packages,
+            'gzclient': launch_args.gzclient,
         })
 
     launch_description.add_action(gazebo)
