@@ -2,6 +2,14 @@
 Changelog for package ari_2dnav_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge branch 'fix/aca/missing-dep' into 'ferrum-devel'
+  missing dep
+  See merge request robots/ari_simulation!43
+* missing dep
+* Contributors: andreacapodacqua
+
 0.0.22 (2023-07-21)
 -------------------
 * Merge branch 'fix/default-world-small-office' into 'ferrum-devel'
