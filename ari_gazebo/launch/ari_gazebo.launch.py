@@ -14,29 +14,25 @@
 
 from dataclasses import dataclass
 import os
-import yaml
-import tempfile
 from os import environ, pathsep
 
-from ament_index_python.packages import get_package_prefix, get_package_share_directory
+from ament_index_python.packages import get_package_prefix
 from launch import LaunchDescription
 from launch.actions import (
     DeclareLaunchArgument,
     SetEnvironmentVariable,
     SetLaunchConfiguration,
-    GroupAction,
-    OpaqueFunction,
 )
-from launch.conditions import IfCondition, UnlessCondition
-from launch.substitutions import LaunchConfiguration
-from launch_ros.actions import Node
+from launch.conditions import IfCondition
+from launch.substitutions import (
+    LaunchConfiguration,
+    AndSubstitution,
+    NotSubstitution,
+)
 from launch_pal.actions import CheckPublicSim
 from launch_pal.robot_arguments import CommonArgs
-from launch_pal.arg_utils import LaunchArgumentsBase, read_launch_argument
-from launch_pal.include_utils import (
-    include_scoped_launch_py_description,
-    include_launch_py_description,
-)
+from launch_pal.arg_utils import LaunchArgumentsBase
+from launch_pal.include_utils import include_scoped_launch_py_description
 
 from ari_description.launch_arguments import AriArgs
 
@@ -56,189 +52,23 @@ class LaunchArguments(LaunchArgumentsBase):
     # docking: DeclareLaunchArgument = CommonArgs.docking
     x: DeclareLaunchArgument = CommonArgs.x
     y: DeclareLaunchArgument = CommonArgs.y
+    z: DeclareLaunchArgument = CommonArgs.z
     yaw: DeclareLaunchArgument = CommonArgs.yaw
     rviz: DeclareLaunchArgument = CommonArgs.rviz
     gzclient: DeclareLaunchArgument = CommonArgs.gzclient
 
 
-def private_navigation(context, *args, **kwargs):
-    actions = []
-    laser_model = read_launch_argument('laser_model', context)
-    torso_front_camera_model = read_launch_argument(
-        'torso_front_camera_model', context)
-    torso_back_camera_model = read_launch_argument(
-        'torso_back_camera_model', context)
-    head_camera_model = read_launch_argument('head_camera_model', context)
-    # docking = read_launch_argument('docking', context)
-    advanced_navigation = read_launch_argument('advanced_navigation', context)
-    use_sim_time = read_launch_argument('use_sim_time', context)
-    rviz_config_pkg = 'ari_2dnav'
-    if advanced_navigation == 'True':
-        rviz_config_pkg = 'ari_advanced_2dnav'
+def generate_launch_description():
 
-    robot_info = {
-        "robot_info_publisher": {
-            "ros__parameters": {
-                "robot_type": "ari",
-                "laser_model": laser_model,
-                "torso_front_camera_model": torso_front_camera_model,
-                "torso_back_camera_model": torso_back_camera_model,
-                "head_camera_model": head_camera_model,
-                "advanced_navigation": (advanced_navigation == 'True'),
-                # "has_dock": (docking == 'True'),
-                "use_sim_time": (use_sim_time == 'True'),
-            }
-        }
-    }
+    # Create the launch description and populate
+    ld = LaunchDescription()
+    launch_arguments = LaunchArguments()
 
-    temp_yaml = tempfile.mkdtemp()
-    temp_robot_info = os.path.join(temp_yaml, '99_robot_info.yaml')
-    with open(temp_robot_info, 'w') as temp_robot_info_file:
-        yaml.safe_dump(robot_info, temp_robot_info_file)
+    launch_arguments.add_to_launch_description(ld)
 
-    # Robot Info Publisher
-    robot_info_env = SetEnvironmentVariable(
-        name='ROBOT_INFO_PATH',
-        value=temp_yaml,
-    )
-    actions.append(robot_info_env)
+    declare_actions(ld, launch_arguments)
 
-    robot_info_publisher = Node(
-        package='robot_info_publisher',
-        executable='robot_info_publisher',
-        name='robot_info_publisher',
-        output='screen',
-    )
-    actions.append(robot_info_publisher)
-
-    # Laser Sensors
-    laser_bringup_launch = include_launch_py_description(
-        pkg_name='ari_laser_sensors',
-        paths=['launch', 'laser_sim.launch.py'],
-    )
-    actions.append(laser_bringup_launch)
-
-    # Navigation
-    nav_bringup_launch = include_launch_py_description(
-        pkg_name='ari_2dnav',
-        paths=['launch', 'navigation.launch.py'],
-    )
-    actions.append(nav_bringup_launch)
-
-    # Localization
-    loc_bringup_launch = include_launch_py_description(
-        pkg_name='ari_2dnav',
-        paths=['launch', 'localization.launch.py'],
-        condition=UnlessCondition(LaunchConfiguration('slam'))
-    )
-    actions.append(loc_bringup_launch)
-
-    # SLAM
-    slam_bringup_launch = include_launch_py_description(
-        pkg_name='ari_2dnav',
-        paths=['launch', 'slam.launch.py'],
-        condition=IfCondition(LaunchConfiguration('slam'))
-    )
-    actions.append(slam_bringup_launch)
-
-    # # # Docking
-    # docking_bringup_launch = include_launch_py_description(
-    #     pkg_name='ari_docking',
-    #     paths=['launch', 'docking_sim.launch.py'],
-    #     condition=IfCondition(LaunchConfiguration('docking'))
-    # )
-    # actions.append(docking_bringup_launch)
-
-    # # Stores Server
-    db_bringup_launch = Node(
-        package='pal_stores_server',
-        executable='pal_stores_server',
-        arguments=[os.path.join(
-            os.environ['HOME'], '.pal', 'stores.db'
-        )],
-        output='screen',
-        condition=IfCondition(LaunchConfiguration('advanced_navigation'))
-    )
-    actions.append(db_bringup_launch)
-
-    # # Advanced Navigation
-    advanced_nav_bringup_launch = include_launch_py_description(
-        pkg_name='ari_advanced_2dnav',
-        paths=['launch', 'advanced_navigation.launch.py'],
-        condition=IfCondition(LaunchConfiguration('advanced_navigation'))
-    )
-    actions.append(advanced_nav_bringup_launch)
-
-    # RViz
-    rviz_bringup_launch = Node(
-        package='rviz2',
-        executable='rviz2',
-        arguments=['-d', os.path.join(
-            get_package_share_directory(rviz_config_pkg),
-            'config',
-            'rviz',
-            'navigation.rviz',
-        )],
-        parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
-        output='screen',
-        condition=IfCondition(LaunchConfiguration('rviz'))
-    )
-    actions.append(rviz_bringup_launch)
-    return actions
-
-
-def public_navigation(context, *args, **kwargs):
-    actions = []
-    ari_2dnav = get_package_share_directory('ari_2dnav')
-    pal_maps = get_package_share_directory('pal_maps')
-    world_name = read_launch_argument('world_name', context)
-    param_file = os.path.join(ari_2dnav, 'config', 'nav_public_sim.yaml')
-    map_path = os.path.join(pal_maps, 'maps', world_name, 'map.yaml')
-
-    # Navigation
-    nav2_bringup_launch = include_scoped_launch_py_description(
-        pkg_name='nav2_bringup',
-        paths=['launch', 'navigation_launch.py'],
-        launch_arguments={
-            'params_file': param_file,
-            'use_sim_time': LaunchConfiguration('use_sim_time'),
-        }
-    )
-    actions.append(nav2_bringup_launch)
-
-    # Localization
-    loc_bringup_launch = include_scoped_launch_py_description(
-        pkg_name='nav2_bringup',
-        paths=['launch', 'localization_launch.py'],
-        launch_arguments={
-            'params_file': param_file,
-            'map': map_path,
-            'use_sim_time': LaunchConfiguration('use_sim_time'),
-        },
-        condition=UnlessCondition(LaunchConfiguration('slam')),
-    )
-    actions.append(loc_bringup_launch)
-
-    # SLAM
-    slam_bringup_launch = include_scoped_launch_py_description(
-        pkg_name='nav2_bringup',
-        paths=['launch', 'slam_launch.py'],
-        launch_arguments={
-            'params_file': param_file,
-            'use_sim_time': LaunchConfiguration('use_sim_time'),
-        },
-        condition=IfCondition(LaunchConfiguration('slam')),
-    )
-    actions.append(slam_bringup_launch)
-
-    # RViz
-    rviz_bringup_launch = include_scoped_launch_py_description(
-        pkg_name='nav2_bringup',
-        paths=['launch', 'rviz_launch.py'],
-        condition=IfCondition(LaunchConfiguration('rviz'))
-    )
-    actions.append(rviz_bringup_launch)
-    return actions
+    return ld
 
 
 def declare_actions(
@@ -273,34 +103,6 @@ def declare_actions(
 
     launch_description.add_action(gazebo)
 
-    navigation = GroupAction(
-        condition=IfCondition(LaunchConfiguration('navigation')),
-        actions=[
-            # Private Navigation
-            OpaqueFunction(
-                function=private_navigation,
-                condition=UnlessCondition(LaunchConfiguration('is_public_sim'))
-            ),
-            # Public Navigation
-            OpaqueFunction(
-                function=public_navigation,
-                condition=IfCondition(LaunchConfiguration('is_public_sim'))
-            ),
-        ]
-    )
-    launch_description.add_action(navigation)
-
-    move_group = include_scoped_launch_py_description(
-        pkg_name='ari_moveit_config',
-        paths=['launch', 'move_group.launch.py'],
-        launch_arguments={
-            'robot_name': robot_name,
-            'use_sim_time': LaunchConfiguration('use_sim_time'),
-        },
-        condition=IfCondition(LaunchConfiguration("moveit")))
-
-    launch_description.add_action(move_group)
-
     robot_spawn = include_scoped_launch_py_description(
         pkg_name='ari_gazebo',
         paths=['launch', 'robot_spawn.launch.py'],
@@ -308,6 +110,7 @@ def declare_actions(
             'robot_name': robot_name,
             'x': launch_args.x,
             'y': launch_args.y,
+            'z': launch_args.z,
             'yaw': launch_args.yaw,
         }
     )
@@ -322,6 +125,53 @@ def declare_actions(
     )
 
     launch_description.add_action(ari_bringup)
+
+    public_navigation_launch = include_scoped_launch_py_description(
+        condition=IfCondition(AndSubstitution(
+            LaunchConfiguration('is_public_sim'), LaunchConfiguration('navigation'))
+        ),
+        pkg_name='ari_gazebo',
+        paths=['launch', 'navigation_public_sim.launch.py'],
+        launch_arguments={
+            'world_name': launch_args.world_name,
+            'slam': launch_args.slam,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+            'rviz': launch_args.rviz,
+        },
+    )
+    launch_description.add_action(public_navigation_launch)
+
+    private_navigation_launch = include_scoped_launch_py_description(
+        condition=IfCondition(AndSubstitution(
+            NotSubstitution(LaunchConfiguration('is_public_sim')),
+            LaunchConfiguration('navigation'))
+        ),
+        pkg_name='ari_gazebo',
+        paths=['launch', 'navigation_private_sim.launch.py'],
+        launch_arguments={
+            'torso_front_camera_model': launch_args.torso_front_camera_model,
+            'torso_back_camera_model': launch_args.torso_back_camera_model,
+            'head_camera_model': launch_args.head_camera_model,
+            'laser_model': launch_args.laser_model,
+            # 'docking': launch_args.docking,
+            'slam': launch_args.slam,
+            'advanced_navigation': launch_args.advanced_navigation,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+            'rviz': launch_args.rviz,
+        },
+    )
+    launch_description.add_action(private_navigation_launch)
+
+    move_group = include_scoped_launch_py_description(
+        pkg_name='ari_moveit_config',
+        paths=['launch', 'move_group.launch.py'],
+        launch_arguments={
+            'robot_name': robot_name,
+            'use_sim_time': LaunchConfiguration('use_sim_time'),
+        },
+        condition=IfCondition(LaunchConfiguration("moveit")))
+
+    launch_description.add_action(move_group)
 
 
 def get_model_paths(packages_names):
@@ -354,16 +204,3 @@ def get_resource_paths(packages_names):
         resource_paths += pathsep + environ["GAZEBO_RESOURCE_PATH"]
 
     return resource_paths
-
-
-def generate_launch_description():
-
-    # Create the launch description and populate
-    ld = LaunchDescription()
-    launch_arguments = LaunchArguments()
-
-    launch_arguments.add_to_launch_description(ld)
-
-    declare_actions(ld, launch_arguments)
-
-    return ld
