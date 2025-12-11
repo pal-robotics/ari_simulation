@@ -2,6 +2,11 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Point Cloud filter pipeline
+* Contributors: antoniobrandi
+
 2.3.0 (2025-10-09)
 ------------------
 * added gzclient and rviz args
