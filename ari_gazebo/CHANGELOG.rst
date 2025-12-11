@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.4.0 (2025-12-11)
+------------------
 * Point Cloud filter pipeline
 * Contributors: antoniobrandi
 
