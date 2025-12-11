@@ -31,6 +31,7 @@ class LaunchArguments(LaunchArgumentsBase):
 
     x: DeclareLaunchArgument = CommonArgs.x
     y: DeclareLaunchArgument = CommonArgs.y
+    z: DeclareLaunchArgument = CommonArgs.z
     yaw: DeclareLaunchArgument = CommonArgs.yaw
 
 
@@ -60,6 +61,7 @@ def declare_actions(
             LaunchConfiguration('robot_name'),
             '-x', LaunchConfiguration('x'),
             '-y', LaunchConfiguration('y'),
+            '-z', LaunchConfiguration('z'),
             '-Y', LaunchConfiguration('yaw'),
         ],
 
