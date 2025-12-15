@@ -2,6 +2,11 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* missing deps
+* Contributors: antoniobrandi
+
 2.4.0 (2025-12-11)
 ------------------
 * Point Cloud filter pipeline
