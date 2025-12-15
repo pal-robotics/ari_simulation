@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.4.1 (2025-12-15)
+------------------
 * missing deps
 * Contributors: antoniobrandi
 
