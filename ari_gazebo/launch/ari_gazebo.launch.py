@@ -40,6 +40,7 @@ from ari_description.launch_arguments import AriArgs
 @dataclass(frozen=True)
 class LaunchArguments(LaunchArgumentsBase):
     laser_model: DeclareLaunchArgument = AriArgs.laser_model
+    robot_model: DeclareLaunchArgument = AriArgs.robot_model
     torso_front_camera_model: DeclareLaunchArgument = AriArgs.torso_front_camera_model
     torso_back_camera_model: DeclareLaunchArgument = AriArgs.torso_back_camera_model
     head_camera_model: DeclareLaunchArgument = AriArgs.head_camera_model
@@ -121,6 +122,7 @@ def declare_actions(
         pkg_name='ari_bringup', paths=['launch', 'ari_bringup.launch.py'],
         launch_arguments={
             'use_sim_time': LaunchConfiguration('use_sim_time'),
+            'robot_model': launch_args.robot_model,
         }
     )
 
@@ -167,6 +169,7 @@ def declare_actions(
         paths=['launch', 'move_group.launch.py'],
         launch_arguments={
             'robot_name': robot_name,
+            'robot_model': launch_args.robot_model,
             'use_sim_time': LaunchConfiguration('use_sim_time'),
         },
         condition=IfCondition(LaunchConfiguration("moveit")))
