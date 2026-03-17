@@ -2,6 +2,11 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* add robot_model param
+* Contributors: silviamasiello
+
 2.4.1 (2025-12-15)
 ------------------
 * missing deps
