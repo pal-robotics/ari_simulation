@@ -50,6 +50,7 @@ class LaunchArguments(LaunchArgumentsBase):
     slam: DeclareLaunchArgument = CommonArgs.slam
     moveit: DeclareLaunchArgument = CommonArgs.moveit
     advanced_navigation: DeclareLaunchArgument = CommonArgs.advanced_navigation
+    end_effector: DeclareLaunchArgument = AriArgs.end_effector
     # docking: DeclareLaunchArgument = CommonArgs.docking
     x: DeclareLaunchArgument = CommonArgs.x
     y: DeclareLaunchArgument = CommonArgs.y
@@ -123,6 +124,7 @@ def declare_actions(
         launch_arguments={
             'use_sim_time': LaunchConfiguration('use_sim_time'),
             'robot_model': launch_args.robot_model,
+            'end_effector': launch_args.end_effector,
         }
     )
 
@@ -171,6 +173,7 @@ def declare_actions(
             'robot_name': robot_name,
             'robot_model': launch_args.robot_model,
             'use_sim_time': LaunchConfiguration('use_sim_time'),
+            'end_effector': launch_args.end_effector,
         },
         condition=IfCondition(LaunchConfiguration("moveit")))
 
