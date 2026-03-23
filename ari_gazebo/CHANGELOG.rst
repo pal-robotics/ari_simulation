@@ -2,6 +2,11 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix simulation with v1
+* Contributors: silviamasiello
+
 2.4.2 (2026-03-17)
 ------------------
 * add robot_model param
