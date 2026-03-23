@@ -2,8 +2,8 @@
 Changelog for package ari_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+2.4.3 (2026-03-23)
+------------------
 * fix simulation with v1
 * Contributors: silviamasiello
 
